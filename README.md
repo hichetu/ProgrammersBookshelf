@@ -7,11 +7,7 @@ The goal is to first reinvigorate our own understanding of those books we paged 
 
 If you feel like this is an experience you'd like to participate in and would have time to do so feel free to request collaborator access to the repository.
 
-## Considered books:
-
-[Programming Challenges: The Programming Contest Training Manual](http://www.amazon.com/Programming-Challenges-Contest-Training-Computer/dp/0387001638/ref=sr_1_2?ie=UTF8&qid=1378584494&sr=8-2&keywords=Skiena)
-
-[The Algorithm Design Manual](http://www.amazon.com/Algorithm-Design-Manual-Steven-Skiena/dp/1849967202/ref=sr_1_1?ie=UTF8&qid=1378584548&sr=8-1&keywords=Skiena)
+## Potential Future Books:
 
 [Introduction to Algorithms](http://www.amazon.com/Introduction-Algorithms-Thomas-H-Cormen/dp/0262033844/ref=sr_1_7?ie=UTF8&qid=1378584548&sr=8-7&keywords=Skiena)
 
@@ -19,7 +15,14 @@ If you feel like this is an experience you'd like to participate in and would ha
 
 ## Current Book
 
-Undecided
+Decided on 9/12/2013 as the first book to tackle.
+
+[Programming Challenges: The Programming Contest Training Manual](http://www.amazon.com/Programming-Challenges-Contest-Training-Computer/dp/0387001638/ref=sr_1_2?ie=UTF8&qid=1378584494&sr=8-2&keywords=Skiena)
+
+The following book was chosen as a supplement to the programming challenges book. We'll see how that works out.
+
+[The Algorithm Design Manual](http://www.amazon.com/Algorithm-Design-Manual-Steven-Skiena/dp/1849967202/ref=sr_1_1?ie=UTF8&qid=1378584548&sr=8-1&keywords=Skiena)
+
 
 ## Past Books
 
