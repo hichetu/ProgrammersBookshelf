@@ -156,7 +156,7 @@ private:
 	int M_;
 
 	size_t fieldNumber_;
-	int workSheet_[100][100];
+	int workSheet_[101][101];
 };
 
 
