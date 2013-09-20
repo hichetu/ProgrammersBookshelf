@@ -52,6 +52,8 @@ Field #2:
 */
 
 #include <iostream>
+#include <cstdio>
+#include <cstring>
 using namespace std;
 
 class Minesweeper
@@ -146,6 +148,7 @@ private:
 					cout<<workSheet_[n][m];
 				}
 			}
+
 			cout<<endl;
 		}
 
