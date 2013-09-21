@@ -82,14 +82,6 @@ int main()
                 }
                 break;
 
-            case 'S':
-                {
-                    char achFile[1024];
-                    scanf("%s", &achFile);
-                    SaveBitmap(achFile);
-                }
-                break;
-
             case 'F':
                 {
                     unsigned long x;
@@ -97,6 +89,14 @@ int main()
                     char color;
                     scanf("%d %d %c", &x, &y, &color);
                     Fill(x, y, color);
+                }
+                break;
+
+            case 'S':
+                {
+                    char achFile[1024];
+                    scanf("%s", &achFile);
+                    SaveBitmap(achFile);
                 }
                 break;
 
@@ -130,7 +130,7 @@ int ComparePixel(unsigned long x, unsigned long y, char color)
     }
     else
     {
-        return (bitmap[y-1][x-1] == color);
+        return (GetPixel(x, y) == color) ? 1 : 0;
     }
 }
 
