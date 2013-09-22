@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <memory.h>
 
+int debugMode = 0;
 char bitmap[250][250];
 unsigned long width;
 unsigned long height;
@@ -13,20 +14,36 @@ void SaveBitmap(char* szFile);
 void Fill(unsigned long x, unsigned long y, char color);
 void SwapMax(unsigned long* ul1, unsigned long* ul2);
 
-int main()
+int main(int argc)
 {
+    if (argc > 1)
+    {
+        debugMode = 1;
+    }
+
     do
     {
-        char command;
-        if (scanf("%c", &command) == EOF)
+        char commandLine[1024];
+        char* command = gets(commandLine);
+
+        if (command == NULL)
         {
             break;
         }
 
-        switch (command)
+        if (debugMode)
+        {
+            printf("Command %c\n", command[0]);
+        }
+
+        switch (command[0])
         {
             case 'I':
-                scanf("%d %d", &width, &height);
+                sscanf(&command[1], "%d %d", &width, &height);
+                if (debugMode)
+                {
+                    printf("I with %d %d\n", width, height);
+                }
                 ClearImage();
                 break;
 
@@ -39,7 +56,11 @@ int main()
                     unsigned long x;
                     unsigned long y;
                     char color;
-                    scanf("%d %d %c", &x, &y, &color);
+                    sscanf(&command[1], "%d %d %c", &x, &y, &color);
+                    if (debugMode)
+                    {
+                        printf("L with %d %d %c\n", x, y, color);
+                    }
                     SetPixel(x, y, color);
                 }
                 break;
@@ -50,7 +71,7 @@ int main()
                     unsigned long y1;
                     unsigned long y2;
                     char color;
-                    scanf("%d %d %d %c", &x, &y1, &y2, &color);
+                    sscanf(&command[1], "%d %d %d %c", &x, &y1, &y2, &color);
                     SwapMax(&y1, &y2);
                     DrawRectangle(x, x, y1, y2, color);
                 }
@@ -62,7 +83,7 @@ int main()
                     unsigned long x2;
                     unsigned long y;
                     char color;
-                    scanf("%d %d %d %c", &x1, &x2, &y, &color);
+                    sscanf(&command[1], "%d %d %d %c", &x1, &x2, &y, &color);
                     SwapMax(&x1, &x2);
                     DrawRectangle(x1, x2, y, y, color);
                 }
@@ -75,7 +96,7 @@ int main()
                     unsigned long y1;
                     unsigned long y2;
                     char color;
-                    scanf("%d %d %d %d %c", &x1, &y1, &x2, &y2, &color);
+                    sscanf(&command[1], "%d %d %d %d %c", &x1, &y1, &x2, &y2, &color);
                     SwapMax(&x1, &x2);
                     SwapMax(&y1, &y2);
                     DrawRectangle(x1, x2, y1, y2, color);
@@ -87,7 +108,7 @@ int main()
                     unsigned long x;
                     unsigned long y;
                     char color;
-                    scanf("%d %d %c", &x, &y, &color);
+                    sscanf(&command[1], "%d %d %c", &x, &y, &color);
                     Fill(x, y, color);
                 }
                 break;
@@ -95,7 +116,7 @@ int main()
             case 'S':
                 {
                     char achFile[1024];
-                    scanf("%s", &achFile);
+                    sscanf(&command[1], "%s", &achFile);
                     SaveBitmap(achFile);
                 }
                 break;
