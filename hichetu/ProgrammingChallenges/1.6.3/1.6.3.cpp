@@ -58,7 +58,7 @@ public:
 
 private:
 
-	bool ReadInput()
+	bool ReadInput()	
 	{
 		if(cin.good())
 		{
@@ -75,29 +75,33 @@ private:
 
 	void Attack()
 	{
-		long totalExpense = 0;
-		vector<long> expenses;
+		unsigned long totalExpense = 0;
+		vector<unsigned long> expenses;
 
 		for(int n=0; n<N_; ++n)
 		{
-			double currExpense;
-			cin>>currExpense;
+			unsigned long currExpenseDollars = 0;
+			unsigned long currExpenseCents = 0;
+			char dot;
 
-			long currExpenseInCents = long(currExpense*100);
+			cin>>currExpenseDollars;
+			cin>>dot;
+			cin>>currExpenseCents;
+
+			unsigned long currExpenseInCents = currExpenseDollars*100 +  currExpenseCents;//unsigned long(currExpense*100);
 
 			totalExpense+= currExpenseInCents;
 			expenses.push_back(currExpenseInCents);
 		}
 
-		long avgExpenseLow = (totalExpense)/N_;
-		long avgExpenseHigh = (2*totalExpense + N_)/(2*N_);
+		unsigned long avgExpenseLow = (totalExpense)/N_;
+		unsigned long avgExpenseHigh = (totalExpense + N_-1)/(N_);
 
-		long low = 0;
-		long high = 0;
+		unsigned long low = 0;
+		unsigned long high = 0;
 
 		for(size_t i=0; i<expenses.size(); ++i)
 		{
-
 			if(expenses[i]<avgExpenseLow)
 			{
 				low += (avgExpenseLow - expenses[i]);
@@ -113,8 +117,8 @@ private:
 
 	void PrintOutput()
 	{
-		long dollars = moneyExchangeInCents_/100;
-		long cents = moneyExchangeInCents_%100;
+		unsigned long dollars = moneyExchangeInCents_/100;
+		unsigned long cents = moneyExchangeInCents_%100;
 
 		if(cents>=10)
 		{
@@ -127,7 +131,7 @@ private:
 	}
 
 	int N_;
-	long moneyExchangeInCents_;
+	unsigned long moneyExchangeInCents_;
 };
 
 

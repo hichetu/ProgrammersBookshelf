@@ -132,7 +132,13 @@ private:
 
 	void PrintOutput()
 	{
+		if(fieldNumber_)
+		{
+			cout<<endl;
+		}
+
 		++fieldNumber_;
+
 		cout<<"Field #"<<fieldNumber_<<":"<<endl;
 
 		for(int n=0; n<N_; ++n)
@@ -151,8 +157,6 @@ private:
 
 			cout<<endl;
 		}
-
-		cout<<endl;
 	}
 
 	int N_;
