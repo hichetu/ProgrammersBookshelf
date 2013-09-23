@@ -1,0 +1,28 @@
+2 wrong answers stemmed from the fact that on their input, they didn't include a
+blank line at the end. This had to be detected to avoid duplicating lines in RAM.
+
+The presentation error was a mis-read on the extra newline "between" cases.
+
+Your statistics
+
+
+Times submitted 4 
+Solved 1 
+Presentation error 1 
+Wrong answer 2 
+Restricted function 0 
+Time limit exceeded 0 
+Compilation error 0 
+Best time 0.016 secs. 
+ 
+
+Overall statistics
+
+
+Times submitted 9214 
+Times solved 1974 
+Users submitted 1911 
+Users solved 1362 
+Best time 0.000 secs. 
+C C++ JAVA PASCAL  
+ 
