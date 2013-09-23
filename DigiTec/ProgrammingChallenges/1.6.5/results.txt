@@ -1,0 +1,28 @@
+This one really sucked since the WA stemmed entirely from stack garbage. 
+
+The final program wound up being a lot more complicated on input handling as a result but
+didn't need to be. I was just overly cautious trying out many different fixes.
+
+Your statistics
+
+
+Times submitted 27 
+Solved 7 
+Presentation error 0 
+Wrong answer 19 
+Restricted function 0 
+Time limit exceeded 0 
+Compilation error 1 
+Best time 0.032 secs. 
+ 
+
+Overall statistics
+
+
+Times submitted 16713 
+Times solved 1814 
+Users submitted 2352 
+Users solved 1082 
+Best time 0.006 secs. 
+C C++ JAVA PASCAL  
+ 

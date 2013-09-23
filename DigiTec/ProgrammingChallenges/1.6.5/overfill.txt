@@ -1,0 +1,4 @@
+I 250 250 
+F 3 3 J
+S test.bmp
+X
