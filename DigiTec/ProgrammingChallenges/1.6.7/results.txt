@@ -1,0 +1,25 @@
+The first issue was that I forgot to remove the debug code. Grader doesn't like that.
+
+The second issue was that pawns were not working because of a variable ordering problem.
+This was introduced because of the way c requires up front variable declarations :-(.
+
+Times submitted 3 
+Solved 1 
+Presentation error 0 
+Wrong answer 2 
+Restricted function 0 
+Time limit exceeded 0 
+Compilation error 0 
+Best time 0.012 secs. 
+ 
+
+Overall statistics
+
+
+Times submitted 6866 
+Times solved 1453 
+Users submitted 1583 
+Users solved 1093 
+Best time 0.000 secs. 
+C C++ JAVA PASCAL  
+ 
