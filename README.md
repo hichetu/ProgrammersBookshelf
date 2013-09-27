@@ -9,7 +9,7 @@ If you feel like this is an experience you'd like to participate in and would ha
 
 ## Potential Future Books:
 
-[Introduction to Algorithms](http://www.amazon.com/Introduction-Algorithms-Thomas-H-Cormen/dp/0262033844/ref=sr_1_7?ie=UTF8&qid=1378584548&sr=8-7&keywords=Skiena)
+[Introduction to Algorithms](http://www.amazon.com/gp/product/0262033844/ref=as_li_tf_tl?ie=UTF8&camp=211189&creative=373489&creativeASIN=0262033844&link_code=as3&tag=origastudi02-20)
 
 [Algorithms in C++, Parts 1-5](http://www.amazon.com/Bundle-Algorithms-Parts-1-5-Fundamentals/dp/020172684X/ref=sr_1_5?ie=UTF8&qid=1378611781&sr=8-5&keywords=Sedgewick)
 
