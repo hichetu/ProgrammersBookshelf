@@ -23,6 +23,12 @@ The following book was chosen as a supplement to the programming challenges book
 
 [The Algorithm Design Manual](http://www.amazon.com/Algorithm-Design-Manual-Steven-Skiena/dp/1849967202/ref=sr_1_1?ie=UTF8&qid=1378584548&sr=8-1&keywords=Skiena)
 
+Graders and site resources for the current set of problems:
+
+[Programming Challenges Grader](http://www.programming-challenges.com/pg.php?page=index)
+
+[Toolkit to test outputs for certain input files](http://uvatoolkit.com/)
+
 
 ## Past Books
 
