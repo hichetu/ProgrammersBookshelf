@@ -361,8 +361,8 @@ class BlackPawn : public Piece
 public:
 	BlackPawn(Cell (*board)[8], const Position& pos, PieceType type) : Piece(board,pos,type)
 	{
-		int dx[] = {-1, +1,};
-		int dy[] = {+1, +1,};
+		int dx[] = {+1, +1,};
+		int dy[] = {-1, +1,};
 
 		dx_ = vector<int>(dx, dx+sizeof(dx)/sizeof(int));
 		dy_ = vector<int>(dy, dy+sizeof(dy)/sizeof(int));
@@ -375,8 +375,8 @@ class WhitePawn : public Piece
 public:
 	WhitePawn(Cell (*board)[8], const Position& pos, PieceType type) : Piece(board,pos,type)
 	{
-		int dx[] = {-1, +1,};
-		int dy[] = {-1, -1,};
+		int dx[] = {-1, -1,};
+		int dy[] = {-1, +1,};
 
 		dx_ = vector<int>(dx, dx+sizeof(dx)/sizeof(int));
 		dy_ = vector<int>(dy, dy+sizeof(dy)/sizeof(int));
@@ -415,9 +415,9 @@ public:
 
 	Position KingPosition(const PieceType& type)
 	{
-		if(type == PieceType::White)
+		if(type == White)
 			return whiteKingPos_;
-		else if(type == PieceType::Black)
+		else if(type == Black)
 			return blackKingPos_;
 
 		return Position();
@@ -425,9 +425,9 @@ public:
 
 	vector<PiecePtr> OpponentPieces(const PieceType& type)
 	{
-		if(type == PieceType::White)
+		if(type == White)
 			return blackPieces_;
-		else if(type == PieceType::Black)
+		else if(type == Black)
 			return whitePieces_;
 
 		return vector<PiecePtr>();
@@ -462,75 +462,75 @@ private:
 			break;
 		case 'p':
 			{
-				board_[x][y].MakePiece<BlackPawn>(board_, x,y,PieceType::Black);
+				board_[x][y].MakePiece<BlackPawn>(board_, x,y,Black);
 				blackPieces_.push_back(board_[x][y].piece);
 			}
 			break;
 		case 'k':
 			{
-				board_[x][y].MakePiece<King>(board_, x,y,PieceType::Black);
+				board_[x][y].MakePiece<King>(board_, x,y,Black);
 				blackPieces_.push_back(board_[x][y].piece);
 				blackKingPos_ = Position(x,y);
 			}
 			break;
 		case 'q':
 			{
-				board_[x][y].MakePiece<Queen>(board_, x,y,PieceType::Black);
+				board_[x][y].MakePiece<Queen>(board_, x,y,Black);
 				blackPieces_.push_back(board_[x][y].piece);
 			}
 			break;
 		case 'b':
 			{
-				board_[x][y].MakePiece<Bishop>(board_, x,y,PieceType::Black);
+				board_[x][y].MakePiece<Bishop>(board_, x,y,Black);
 				blackPieces_.push_back(board_[x][y].piece);
 			}
 			break;
 		case 'n':
 			{
-				board_[x][y].MakePiece<Knight>(board_, x,y,PieceType::Black);
+				board_[x][y].MakePiece<Knight>(board_, x,y,Black);
 				blackPieces_.push_back(board_[x][y].piece);
 			}
 			break;
 		case 'r':
 			{
-				board_[x][y].MakePiece<Rook>(board_, x,y,PieceType::Black);
+				board_[x][y].MakePiece<Rook>(board_, x,y,Black);
 				blackPieces_.push_back(board_[x][y].piece);
 			}
 			break;
 		case 'P':
 			{
-				board_[x][y].MakePiece<WhitePawn>(board_, x,y,PieceType::White);
+				board_[x][y].MakePiece<WhitePawn>(board_, x,y,White);
 				whitePieces_.push_back(board_[x][y].piece);
 			}
 			break;
 		case 'K':
 			{
-				board_[x][y].MakePiece<King>(board_, x,y,PieceType::White);
+				board_[x][y].MakePiece<King>(board_, x,y,White);
 				whitePieces_.push_back(board_[x][y].piece);
 				whiteKingPos_ = Position(x,y);
 			}
 			break;
 		case 'Q':
 			{
-				board_[x][y].MakePiece<Queen>(board_, x,y,PieceType::White);
+				board_[x][y].MakePiece<Queen>(board_, x,y,White);
 				whitePieces_.push_back(board_[x][y].piece);
 			}
 			break;
 		case 'B':
 			{
-				board_[x][y].MakePiece<Bishop>(board_, x,y,PieceType::White);
+				board_[x][y].MakePiece<Bishop>(board_, x,y,White);
 				whitePieces_.push_back(board_[x][y].piece);
 			}
 			break;
 		case 'N':
 			{
-				board_[x][y].MakePiece<Knight>(board_, x,y,PieceType::White);
+				board_[x][y].MakePiece<Knight>(board_, x,y,White);
 				whitePieces_.push_back(board_[x][y].piece);
 			}
 			break;
 		case 'R':
 			{
-				board_[x][y].MakePiece<Rook>(board_, x,y,PieceType::White);
+				board_[x][y].MakePiece<Rook>(board_, x,y,White);
 				whitePieces_.push_back(board_[x][y].piece);
 			}
 			break;
@@ -575,12 +575,12 @@ public:
 
 	bool IsWhiteKingInCheck()
 	{
-		return IsKingInCheck(PieceType::White);
+		return IsKingInCheck(White);
 	}
 
 	bool IsBlackKingInCheck()
 	{
-		return IsKingInCheck(PieceType::Black);
+		return IsKingInCheck(Black);
 	}
 
 	bool MakeBoard(const vector<string>& data)
