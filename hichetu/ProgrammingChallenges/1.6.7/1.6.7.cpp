@@ -183,6 +183,12 @@ struct Cell
 	void MakeNoPiece(int x, int y)
 	{
 		pos = Position(x,y);
+
+		if(piece)
+		{
+			delete piece;
+		}
+
 		piece = NULL;
 	}
 
@@ -676,13 +682,6 @@ private:
 	{
 		std::cout<<"Game #"<<gameNumber_<<": "<<checkedKing_<<" king is in check."<<endl;
 	}
-
-	enum Checked
-	{
-		White,
-		Black,
-		None
-	};
 
 	vector<string> inputData_;
 	ChessGame game_;
