@@ -1,0 +1,17 @@
+Your statistics
+Times submitted 	3
+Solved 	1
+Presentation error 	0
+Wrong answer 	1
+Restricted function 	0
+Time limit exceeded 	0
+Compilation error 	1
+Best time 	0.018 secs.
+
+Overall statistics
+Times submitted 	6887
+Times solved 	1458
+Users submitted 	1585
+Users solved 	1097
+Best time 	0.000 secs.
+C C++ JAVA PASCAL 	
