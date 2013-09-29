@@ -94,7 +94,7 @@ Game #2: white king is in check.
 
 
 */
-#include <memory>
+
 #include <string>
 #include <iostream>
 #include <vector>
@@ -111,7 +111,9 @@ struct Position
 	int x;
 	int y;
 
-	Position(int xv = -1, int yv = -1) : x(xv), y(yv) {}
+	Position() : x(-1), y(-1) {}
+
+	Position(int xv, int yv) : x(xv), y(yv) {}
 
 	Position(const Position& pos) : x(pos.x), y(pos.y) {}
 
@@ -165,33 +167,38 @@ struct Position
 
 struct Cell;
 class Piece;
-typedef std::shared_ptr<Piece> PiecePtr;
+typedef Piece* PiecePtr;
 
 struct Cell
 {
 	Position pos;
 	PiecePtr piece;
 
-	void Clear()
-	{
-		pos.Clear();
-		piece.reset();
-	}
+	Cell() : piece(NULL) {}
+
+	~Cell();
+
+	void Clear();
 
 	void MakeNoPiece(int x, int y)
 	{
 		pos = Position(x,y);
-		piece.reset();
+		piece = NULL;
 	}
 
 	template < typename P>
 	void MakePiece(Cell (*board)[8], int x, int y, PieceType type) 
 	{
 		pos = Position(x,y);
-		piece = make_shared<P>(P(board, pos, type));
+
+		if(piece)
+		{
+			delete piece;
+		}
+
+		piece =  new P(board, pos, type);
 	}
 };
-
 
 class Piece
 {
@@ -200,6 +207,8 @@ public:
 	Piece(Cell (*board)[8], const Position& pos, PieceType type) : board_(board), currPos_(pos), type_(type)
 	{
 	}
+
+	virtual ~Piece() {}
 
 	Position NextMove()
 	{
@@ -217,11 +226,11 @@ public:
 		{
 			for(int m=1; m<=range_; ++m)
 			{
-				Position n = currPos_ + Position(dx_[i]*m + dy_[i]*m);
+				Position n = currPos_ + Position(dx_[i]*m , dy_[i]*m);
 
 				if(n.IsInside())
 				{
-					if(board_[n.x][n.y].piece.get() == nullptr)
+					if(board_[n.x][n.y].piece == NULL)
 					{
 						moves_.push_back(n);
 						continue;
@@ -235,6 +244,10 @@ public:
 					{
 						break;
 					}
+				}
+				else
+				{
+					break;
 				}
 			}
 		}
@@ -259,6 +272,19 @@ protected:
 	vector<int> dy_;
 	int range_;
 };
+
+Cell::~Cell()
+{
+	Clear();
+}
+
+void Cell::Clear()
+{
+	pos.Clear();
+	delete  piece;
+	piece = NULL;
+}
+
 
 class King : public Piece
 {
@@ -374,11 +400,11 @@ public:
 
 		if(data.size() !=8) return false;
 
-		for(size_t x=0; data.size()<8; ++x)
+		for(size_t x=0; x<data.size(); ++x)
 		{
 			if(data[x].size() !=8) return false;
 
-			for(size_t y=0; y<8; ++y)
+			for(size_t y=0; y<data[x].size(); ++y)
 			{
 				MakeCell(x,y,data[x][y]);
 			}
@@ -444,6 +470,7 @@ private:
 			{
 				board_[x][y].MakePiece<King>(board_, x,y,PieceType::Black);
 				blackPieces_.push_back(board_[x][y].piece);
+				blackKingPos_ = Position(x,y);
 			}
 			break;
 		case 'q':
@@ -480,6 +507,7 @@ private:
 			{
 				board_[x][y].MakePiece<King>(board_, x,y,PieceType::White);
 				whitePieces_.push_back(board_[x][y].piece);
+				whiteKingPos_ = Position(x,y);
 			}
 			break;
 		case 'Q':
@@ -612,16 +640,33 @@ private:
 	{
 		inputData_.clear();
 
+		bool allEmpty = true;
+
 		for(int x=0; x<8; ++x)
 		{
 			string str;
 			getline(cin, str);
 
-			if(cin.bad()) return false;
+			if(cin.bad() || !str.size())
+			{
+				return false;
+			}
+
+			if(str != "........")
+			{
+				allEmpty = false;
+			}
 
 			inputData_.push_back(str);
 		}
 
+		if(allEmpty)
+		{
+			return false;
+		}
+
+		string str;
+		getline(cin, str);
 		++gameNumber_;
 
 		return true;
