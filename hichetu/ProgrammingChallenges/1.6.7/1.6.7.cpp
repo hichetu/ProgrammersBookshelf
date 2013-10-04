@@ -180,30 +180,10 @@ struct Cell
 
 	void Clear();
 
-	void MakeNoPiece(int x, int y)
-	{
-		pos = Position(x,y);
-
-		if(piece)
-		{
-			delete piece;
-		}
-
-		piece = NULL;
-	}
+	void MakeNoPiece(int x, int y);
 
 	template < typename P>
-	void MakePiece(Cell (*board)[8], int x, int y, PieceType type) 
-	{
-		pos = Position(x,y);
-
-		if(piece)
-		{
-			delete piece;
-		}
-
-		piece =  new P(board, pos, type);
-	}
+	void MakePiece(Cell (*board)[8], int x, int y, PieceType type);
 };
 
 class Piece
@@ -291,6 +271,30 @@ void Cell::Clear()
 	piece = NULL;
 }
 
+template < typename P>
+void Cell::MakePiece(Cell (*board)[8], int x, int y, PieceType type) 
+{
+	pos = Position(x,y);
+
+	if(piece)
+	{
+		delete piece;
+	}
+
+	piece =  new P(board, pos, type);
+}
+
+void Cell::MakeNoPiece(int x, int y)
+{
+	pos = Position(x,y);
+
+	if(piece)
+	{
+		delete piece;
+	}
+
+	piece = NULL;
+}
 
 class King : public Piece
 {
