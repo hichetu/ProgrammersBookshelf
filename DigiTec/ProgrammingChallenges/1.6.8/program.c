@@ -71,8 +71,14 @@ void ProcessCase()
 		while (tok != NULL)
 		{
 			ballots[ballotCount][choice++] = atoi(tok) - 1;
+#ifdef DEBUG
+			printf("%d ", ballots[ballotCount][choice-1]);
+#endif
 			tok = strtok(NULL, seps);
 		}
+#ifdef DEBUG
+		printf("\n");
+#endif
 		ballotCount++;
 		line = gets(achBuf);
 	}
