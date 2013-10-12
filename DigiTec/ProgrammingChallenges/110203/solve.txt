@@ -1,0 +1,8 @@
+Times submitted 1 
+Solved 1 
+Presentation error 0 
+Wrong answer 0 
+Restricted function 0 
+Time limit exceeded 0 
+Compilation error 0 
+Best time 0.025 secs. 
