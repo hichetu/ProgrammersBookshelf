@@ -6,6 +6,9 @@
 #include <iostream>
 #include <sstream>
 #include <cstdlib>
+#include <algorithm>
+#include <map>
+#include <functional>
 using namespace std;
 
 enum Winner
@@ -128,22 +131,382 @@ std::istream & operator>> (std::istream &in, Card& card)
 
 	card.Value() = value;
 	card.Suit() = suit;
+
+	return in;
 }
 
-class Poker
+class PokerHand
 {
+public:
 
+	void ReadInput(stringstream& data)
+	{
+		for(size_t i=0; i<5; ++i)
+		{
+			data >> cards_[i];
+		}
+
+		std::sort(cards_, cards_ + 5);
+	}
+
+	bool TryStraightFlush(vector<int>& rank)
+	{
+		rank.clear();
+
+		bool isStraightFlush = true;
+		Suit suit = cards_[0].Suit();
+		int sValue = cards_[0].Value();
+
+		for(size_t i=1; i<5; ++i)
+		{
+			if(cards_[i].Suit() != suit)
+			{
+				isStraightFlush = false;
+				break;
+			}
+
+			if(cards_[i].Value() != ++sValue)
+			{
+				isStraightFlush = false;
+				break;
+			}
+		}
+
+		if(isStraightFlush)
+		{
+			rank.push_back(cards_[4].Value());
+		}
+
+		return isStraightFlush;
+	}
+
+	bool TryFourOfAKind(vector<int>& rank)
+	{
+		rank.clear();
+
+		map<int,int> mapFour;
+
+		for(size_t i=0; i<5; ++i)
+		{
+			++mapFour[cards_[i].Value()];
+		}
+
+		for(map<int,int>::iterator iter = mapFour.begin(); iter!=mapFour.end(); ++iter)
+		{
+			if(iter->second == 4)
+			{
+				rank.push_back(iter->first);
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	bool TryFullHouse(vector<int>& rank)
+	{
+		rank.clear();
+
+		map<int,int> mapFullHouse;
+
+		for(size_t i=0; i<5; ++i)
+		{
+			++mapFullHouse[cards_[i].Value()];
+		}
+
+		if(mapFullHouse.size() != 2) return false;
+
+		if(mapFullHouse.begin()->second == 3)
+		{
+			rank.push_back(mapFullHouse.begin()->first);
+			return true;
+		}
+
+		if(mapFullHouse.rbegin()->second == 3)
+		{
+			rank.push_back(mapFullHouse.rbegin()->first);
+			return true;
+		}
+
+		return false;
+	}
+
+	bool TryFlush(vector<int>& rank)
+	{
+		rank.clear();
+
+		bool isFlush = true;
+		Suit suit = cards_[0].Suit();
+
+		for(size_t i=1; i<5; ++i)
+		{
+			if(cards_[i].Suit() != suit)
+			{
+				isFlush = false;
+				break;
+			}
+		}
+
+		if(isFlush)
+		{
+			rank.push_back(cards_[4].Value());
+		}
+
+		return isFlush;
+	}
+
+	bool TryStraight(vector<int>& rank)
+	{
+		rank.clear();
+
+		bool isStraight = true;
+		int sValue = cards_[0].Value();
+
+		for(size_t i=1; i<5; ++i)
+		{
+			if(cards_[i].Value() != ++sValue)
+			{
+				isStraight = false;
+				break;
+			}
+		}
+
+		if(isStraight)
+		{
+			rank.push_back(cards_[4].Value());
+		}
+
+		return isStraight;
+	}
+
+	bool TryThreeOfAKind(vector<int>& rank)
+	{
+		rank.clear();
+
+		map<int,int> mapThree;
+
+		for(size_t i=0; i<5; ++i)
+		{
+			++mapThree[cards_[i].Value()];
+		}
+
+		for(map<int,int>::iterator iter = mapThree.begin(); iter!=mapThree.end(); ++iter)
+		{
+			if(iter->second == 3)
+			{
+				rank.push_back(iter->first);
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	bool TryTwoPairs(vector<int>& rank)
+	{
+		rank.clear();
+		rank.push_back(0);
+		rank.push_back(0);
+		rank.push_back(0);
+
+		map<int,int> mapTwoPairs;
+
+		for(size_t i=0; i<5; ++i)
+		{
+			++mapTwoPairs[cards_[i].Value()];
+		}
+
+		if(mapTwoPairs.size() != 3)
+		{
+			return false;
+		}
+
+		for(map<int,int>::iterator iter = mapTwoPairs.begin(); iter!=mapTwoPairs.end(); ++iter)
+		{
+			if(iter->second == 2)
+			{
+				rank[0] = rank[0];
+				rank[1] = iter->first;
+			}
+			else if(iter->second == 1)
+			{
+				if(rank[2]) return false;
+
+				rank[2] = iter->first;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		if(rank[0] < rank[1]) swap(rank[0], rank[1]);
+
+		return true;
+	}
+
+	bool TryPairs(vector<int>& rank)
+	{
+		rank.clear();
+		rank.push_back(0);
+		rank.push_back(0);
+		rank.push_back(0);
+		rank.push_back(0);
+
+		map<int,int> mapTwoPairs;
+
+		for(size_t i=0; i<5; ++i)
+		{
+			++mapTwoPairs[cards_[i].Value()];
+		}
+
+		for(map<int,int>::iterator iter = mapTwoPairs.begin(); iter!=mapTwoPairs.end(); ++iter)
+		{
+			if(iter->second == 2)
+			{
+				rank[0] = iter->first;
+			}
+			else
+			{
+				rank[1] = rank[2];
+				rank[2] = rank[3];
+				rank[3] = iter->first;
+			}
+		}
+
+		if(!rank[0]) return false;
+
+		sort(++rank.begin(), rank.end(), greater<int>());
+
+		return true;
+	}
+
+	bool TryHighCard(vector<int>& rank)
+	{
+		rank.clear();
+
+		for(int i=4; i>=0; --i)
+		{
+			rank.push_back(cards_[i].Value());
+		}
+
+		return true;
+	}
+
+private:
+	Card cards_[5];
 };
 
-class PokerHands
+typedef bool (PokerHand::*Rule)(vector<int>& rank);
+
+class PokerGame
+{
+public:
+
+	PokerGame() :
+		winner_(None)
+	{
+		rules_.push_back(&PokerHand::TryStraightFlush);
+		rules_.push_back(&PokerHand::TryFourOfAKind);
+		rules_.push_back(&PokerHand::TryFullHouse);
+		rules_.push_back(&PokerHand::TryFlush);
+		rules_.push_back(&PokerHand::TryStraight);
+		rules_.push_back(&PokerHand::TryThreeOfAKind);
+		rules_.push_back(&PokerHand::TryTwoPairs);
+		rules_.push_back(&PokerHand::TryPairs);
+		rules_.push_back(&PokerHand::TryHighCard);
+	}
+
+	void ReadInput(stringstream& data)
+	{
+		black_.ReadInput(data);
+		white_.ReadInput(data);
+	}
+
+	void Play()
+	{
+		for(size_t i=0; i<rules_.size(); ++i)
+		{
+			if(HasWinner(rules_[i]))
+			{
+				return;
+			}
+		}
+	}
+
+	::Winner Winner() const
+	{
+		return winner_;
+	}
+
+	bool HasWinner(Rule rule)
+	{
+		vector<int> bRank;
+		vector<int> wRank;
+
+		bool fBlack = (black_.*rule)(bRank);
+		bool fWhite = (white_.*rule)(wRank);
+
+		if(!fBlack && !fWhite)
+		{
+			winner_ = None;
+			return false;
+		}
+
+		if(fBlack && fWhite)
+		{
+			for(size_t i=0; i<bRank.size(); ++i)
+			{
+				if(bRank[i] > wRank[i])
+				{
+					winner_ = Black;
+					return true;
+				}
+
+				if(wRank[i] > bRank[i])
+				{
+					winner_ = White;
+					return true;
+				}			
+			}
+
+			winner_ = None;
+			return false;
+		}
+
+		if(fBlack)
+		{
+			winner_ = Black;
+			return true;
+		}	
+
+		if(fWhite)
+		{
+			winner_ = White;
+			return true;
+		}
+
+		winner_ = None;
+		return false;
+	}
+
+private:
+	PokerHand black_;
+	PokerHand white_;
+	::Winner winner_;
+
+	vector<Rule> rules_;
+};
+
+class Problem
 {
 public:
 	void Solve()
 	{
 		while(ReadInput())
 		{
-			WhoWon();
-			PrintWhoWon();
+			game_.Play();
+			PrintOutput();
 		}
 	}
 
@@ -151,145 +514,52 @@ private:
 
 	bool ReadInput()
 	{
-		input_.clear();
+		string input;
 
-		getline(cin,input_);
+		getline(cin,input);
 
 		if(cin.bad())
 		{
 			return false;
 		}
 
-		if(input_.empty())
+		if(input.empty())
 		{
 			return false;
 		}
 
+		stringstream data(input);
+
+		game_.ReadInput(data);
+
 		return true;
 	}
 
-	void WhoWon()
+	void PrintOutput()
 	{
-		ReadBlackCards();
-		ReadWhiteCards();
-		PlayPoker();
-		WhoWinsPoker();		
-	}
-
-	void WhoWinsPoker()
-	{
-		if(BlackWins())
+		switch (game_.Winner())
 		{
-			output_ = "Black wins.";
+		case Black:
+			cout<<"Black wins."<<endl;
+			break;
+
+		case White:
+			cout<<"White wins."<<endl;
+			break;
+
+		case None:
+			cout<<"Tie."<<endl;
+			break;
 		}
-		else if(WhiteWins())
-		{
-			output_ = "White wins.";
-		}
-		else
-		{
-			output_ = "Tie.";
-		}
-	}
-
-	void PlayPoker()
-	{
-		winner_ = None;
-
-		if(CheckStraightFlush())
-		{
-			return;
-		}
-
-		if(CheckFourOfAKind())
-		{
-			return;
-		}
-
-		if(CheckFullHouse())
-		{
-			return;
-		}
-
-		if(CheckFlush())
-		{
-			return;
-		}
-
-		if(CheckStraight())
-		{
-			return;
-		}
-
-		if(CheckThreeOfAKind())
-		{
-			return;
-		}
-
-		if(CheckTwoPairs())
-		{
-			return;
-		}
-
-		if(CheckPair())
-		{
-			return;
-		}
-
-		if(CheckHighCard())
-		{
-			return;
-		}
-	}
-
-	bool BlackWins() const
-	{
-		return winner_ == Black;
-	}
-
-	bool WhiteWins() const
-	{
-		return winner_ == White;
-	}
-
-	void ReadBlackCards()
-	{
-		stringstream stream(input_);
-
-		for(size_t i=0; i<5; ++i)
-		{
-			stream >> blackCards[i];
-		}
-	}
-
-	void ReadWhiteCards()
-	{
-		stringstream stream(input_);
-
-		for(size_t i=0; i<5; ++i)
-		{
-			stream >> whiteCards[i];
-		}
-	}
-
-	bool CheckStraightFlush()
-	{
-
-
-		return false;
 	}
 
 private:
-	string input_;
-	string output_;
-	Winner winner_;
-	Card blackCards[5];
-	Card whiteCards[5];
+	PokerGame game_;
 };
 
 int main()
 {
-	PokerHands problem;
+	Problem problem;
 
 	problem.Solve();
 

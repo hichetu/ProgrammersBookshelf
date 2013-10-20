@@ -1,0 +1,23 @@
+Status: Solved
+
+
+Your submission history
+ID 	Time 	Verdict 	Runtime 	Lang
+513429 	13/10/20 21:34 	Solved 	0.026 secs. 	CPP
+	Your statistics
+Times submitted 	1
+Solved 	1
+Presentation error 	0
+Wrong answer 	0
+Restricted function 	0
+Time limit exceeded 	0
+Compilation error 	0
+Best time 	0.026 secs.
+
+Overall statistics
+Times submitted 	4950
+Times solved 	1088
+Users submitted 	1136
+Users solved 	771
+Best time 	0.000 secs.
+C C++ JAVA PASCAL 	
