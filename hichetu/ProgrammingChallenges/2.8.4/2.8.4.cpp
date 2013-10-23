@@ -131,12 +131,15 @@ private:
 		{
 			string word;
 			stream >> word;
-			inputWords_.push_back(word);
-			mapCipher_[word] = mapLengthToDictionaryStrings_[word.size()];
-
-			if(mapCipher_[word].size() == 1)
+			if(!word.empty())
 			{
-				MapChars(word, *(mapCipher_[word].begin()));
+				inputWords_.push_back(word);
+				mapCipher_[word] = mapLengthToDictionaryStrings_[word.size()];
+
+				if(mapCipher_[word].size() == 1)
+				{
+					MapChars(word, *(mapCipher_[word].begin()));
+				}
 			}
 		}
 	}
@@ -196,13 +199,32 @@ private:
 
 		for(size_t i=0; i<code.size(); ++i)
 		{
-			if(mapChars_.find(code[i]) != mapChars_.end())
+			if(mapChars_.count(code[i]))
 			{
 				for(set<string>::iterator setIter = setTargets.begin(); setIter != setTargets.end(); )
 				{
 					const string& strTarget = *setIter;
 
 					if(mapChars_[code[i]] != strTarget[i])
+					{
+						set<string>::iterator eraseIter = setIter;
+						++setIter;
+						setTargets.erase(eraseIter);
+						fProgress = true;
+					}
+					else
+					{
+						++setIter;
+					}
+				}
+			}
+			else
+			{
+				for(set<string>::iterator setIter = setTargets.begin(); setIter != setTargets.end(); )
+				{
+					const string& strTarget = *setIter;
+
+					if(mapRChars_.count(strTarget[i]))
 					{
 						set<string>::iterator eraseIter = setIter;
 						++setIter;
@@ -303,12 +325,15 @@ private:
 		{
 			string word;
 			stream >> word;
-			inputWords_.push_back(word);
-			mapCipher_[word] = mapLengthToDictionaryStrings_[word.size()];
-
-			if(mapCipher_[word].size() == 1)
+			if(!word.empty())
 			{
-				MapChars(word, *(mapCipher_[word].begin()));
+				inputWords_.push_back(word);
+				mapCipher_[word] = mapLengthToDictionaryStrings_[word.size()];
+
+				if(mapCipher_[word].size() == 1)
+				{
+					MapChars(word, *(mapCipher_[word].begin()));
+				}
 			}
 		}
 	}
@@ -384,6 +409,25 @@ private:
 					const string& strTarget = *setIter;
 
 					if(mapChars_[code[i]] != strTarget[i])
+					{
+						set<string>::iterator eraseIter = setIter;
+						++setIter;
+						setTargets.erase(eraseIter);
+						fProgress = true;
+					}
+					else
+					{
+						++setIter;
+					}
+				}
+			}
+			else
+			{
+				for(set<string>::iterator setIter = setTargets.begin(); setIter != setTargets.end(); )
+				{
+					const string& strTarget = *setIter;
+
+					if(mapRChars_.count(strTarget[i]))
 					{
 						set<string>::iterator eraseIter = setIter;
 						++setIter;
