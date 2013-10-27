@@ -10,35 +10,19 @@
 #include <algorithm>
 #include <bitset>
 #include <set>
+
+#if _MSC_VER >=	1700
+#include <chrono>
+#endif
+
 using namespace std;
 
-class EnigmaGuess;
 
 class EnigmaGuess
 {
 public:
 
-	EnigmaGuess() {}
-
-	EnigmaGuess(	
-		vector<string> dictionary,
-		vector<string> inputWords,
-		map< size_t, set<string> > mapLengthToDictionaryStrings,
-		map<char, char> mapChars,
-		map<char, char> mapRChars,
-		map<string, set<string>> mapCipher
-		)
-		: fAbort_(false),
-		dictionary_(dictionary),
-		inputWords_(inputWords),
-		mapLengthToDictionaryStrings_(mapLengthToDictionaryStrings),
-		mapChars_(mapChars),
-		mapRChars_(mapRChars),
-		mapCipher_(mapCipher)
-	{
-	}
-
-	void SetDictionary(const vector<string>& dictionary)
+	static void SetDictionary(const vector<string>& dictionary)
 	{
 		dictionary_ = dictionary;
 		mapLengthToDictionaryStrings_.clear();
@@ -51,8 +35,6 @@ public:
 
 	string Decrpyt(const string& message)
 	{
-		BuildWords(message);
-
 		DecrpytStage0();
 
 		if(Abort()) return string();
@@ -100,34 +82,6 @@ public:
 		}
 	}
 
-
-	void Clear()
-	{
-		inputWords_.clear();
-		mapChars_.clear();
-		mapRChars_.clear();
-		mapCipher_.clear();
-		fAbort_ = false;
-	}
-
-
-private:
-
-	bool Abort() const
-	{
-		return fAbort_;
-	}
-
-	bool Lucky()
-	{
-		for(map<string, set<string> >::iterator iter = mapCipher_.begin(); iter != mapCipher_.end(); ++iter)
-		{
-			if(iter->second.size() != 1) return false;;
-		}
-
-		return true;
-	}
-
 	void BuildWords(const string& message)
 	{
 		stringstream stream(message);
@@ -142,12 +96,63 @@ private:
 				inputWords_.push_back(word);
 				mapCipher_[word] = mapLengthToDictionaryStrings_[word.size()];
 
+				PruneForCharacterFrequenceMatch(word);
+
 				if(mapCipher_[word].size() == 1)
 				{
 					MapChars(word, *(mapCipher_[word].begin()));
 				}
 			}
 		}
+	}
+private:
+
+	void PruneForCharacterFrequenceMatch(const string& word)
+	{
+		set<string>& setTargets = mapCipher_[word];
+		size_t uniqueCharacters = UniqueCharactersInWord(word);
+
+		for(set<string>::iterator setIter = setTargets.begin(); setIter != setTargets.end(); )
+		{
+			const string& strTarget = *setIter;
+			size_t uniqueCharactersInTarget = UniqueCharactersInWord(strTarget);
+
+			if(uniqueCharacters != uniqueCharactersInTarget)
+			{
+				set<string>::iterator eraseIter = setIter;
+				++setIter;
+				setTargets.erase(eraseIter);
+			}
+			else
+			{
+				++setIter;
+			}
+		}
+	}
+
+	size_t UniqueCharactersInWord(const string& word)
+	{
+		map<char, int> mapChars;
+		for(size_t i=0; i<word.size(); ++i)
+		{
+			++mapChars[word[i]];
+		}
+		return mapChars.size();
+	}
+
+	bool Abort() const
+	{
+		return fAbort_;
+	}
+
+	bool Lucky()
+	{
+		for(map<string, set<string> >::iterator iter = mapCipher_.begin(); iter != mapCipher_.end(); ++iter)
+		{
+			if(iter->second.size() != 1) return false;;
+		}
+
+		return true;
 	}
 
 	string Decode()
@@ -172,6 +177,7 @@ private:
 	void DecrpytStage0()
 	{
 		bool fProgress = true;
+		fAbort_ = false;
 
 		while(fProgress)
 		{
@@ -262,7 +268,7 @@ private:
 
 			for(set<string>::const_iterator iter = target.begin(); iter!=target.end(); ++iter)
 			{
-				EnigmaGuess enigmaGuess(dictionary_, inputWords_, mapLengthToDictionaryStrings_, mapChars_, mapRChars_, mapCipher_);
+				EnigmaGuess enigmaGuess(*this);
 
 				if(!enigmaGuess.MapGuessChars(code, *iter)) continue;
 
@@ -277,6 +283,8 @@ private:
 
 	void BuildGuesses()
 	{
+		guessWork_.clear();
+
 		for(map<string, set<string> >::iterator iter = mapCipher_.begin(); iter != mapCipher_.end(); ++iter)
 		{
 			if(iter->second.size() == 1) continue;
@@ -288,15 +296,20 @@ private:
 
 private:
 	bool fAbort_;
-	vector<string> dictionary_;
 	vector<string> inputWords_;
-	map< size_t, set<string> > mapLengthToDictionaryStrings_;
 	map<char, char> mapChars_;
 	map<char, char> mapRChars_;
-	map<string, set<string>> mapCipher_;
+	map<string, set<string> > mapCipher_;
 
 	vector< pair< string, set<string> > > guessWork_;
+
+private:
+	static vector<string> dictionary_;
+	static map< size_t, set<string> > mapLengthToDictionaryStrings_;
 };
+
+vector<string> EnigmaGuess::dictionary_;
+map< size_t, set<string> > EnigmaGuess::mapLengthToDictionaryStrings_;
 
 class Problem
 {
@@ -323,34 +336,50 @@ public:
 		stringstream stream(line);
 		stream >> dictionarySize;
 
-		vector<string> dictionary;
-		dictionary.reserve(dictionarySize);
+		dictionary_.clear();
+		dictionary_.reserve(dictionarySize);
 
 		for(size_t i=0; i<dictionarySize; ++i)
 		{
 			string line;
 			getline(cin, line);
-			dictionary.push_back(line);
+
+			dictionary_.push_back(trim(line));
 		}
 
-		enigma_.SetDictionary(dictionary);
+		EnigmaGuess::SetDictionary(dictionary_);
+	}
+
+	string trim(const std::string& str, const std::string& whitespace = " \t")
+	{
+		const string::size_type strBegin = str.find_first_not_of(whitespace);
+		if (strBegin == std::string::npos)
+			return ""; // no content
+
+		const string::size_type strEnd = str.find_last_not_of(whitespace);
+		const string::size_type strRange = strEnd - strBegin + 1;
+
+		return str.substr(strBegin, strRange);
 	}
 
 	bool ReadEncryptedInputs()
 	{
-		encrpytedLine_.clear();
-		getline(cin, encrpytedLine_);
+		string str;
+		getline(cin, str);
 
 		if(cin.bad()) return false;
-		if(encrpytedLine_.empty()) return false;
+		if(str.empty()) return false;
+
+		encrpytedLine_ = trim(str);
 
 		return true;
 	}
 
 	void DecryptCipher()
 	{
-		enigma_.Clear();
-		theSecret_ = enigma_.Decrpyt(encrpytedLine_);
+		EnigmaGuess enigma;
+		enigma.BuildWords(encrpytedLine_);
+		theSecret_ = enigma.Decrpyt(encrpytedLine_);
 	}
 
 	void PrintTheSecret()
@@ -377,14 +406,27 @@ public:
 private:
 	string encrpytedLine_;
 	string theSecret_;
-	EnigmaGuess enigma_;
 	int outputCounter_;
+	vector<string> dictionary_;
 };
 
 int main()
 {
+#if _MSC_VER >=	1700
+	chrono::time_point<chrono::system_clock> start, end;
+	start = chrono::system_clock::now();
+#endif
+
+
 	Problem problem;
 	problem.Solve();
+
+#if _MSC_VER >=	1700
+	end = chrono::system_clock::now();
+	chrono::duration<double> elapsed_seconds = end-start;
+	cout <<"\n"<<endl;
+	cout << "elapsed time: " << elapsed_seconds.count() << "s\n";
+#endif
 
 	return 0;
 }
