@@ -1,0 +1,25 @@
+Problem: Stack 'em Up (110205) 	Status: Solved
+
+
+Your submission history
+ID 	Time 	Verdict 	Runtime 	Lang
+514618 	13/11/01 03:55 	Compilation error 	0.000 secs. 	CPP
+514619 	13/11/01 03:57 	Presentation error 	0.029 secs. 	CPP
+514622 	13/11/01 03:59 	Solved 	0.029 secs. 	CPP
+	Your statistics
+Times submitted 	3
+Solved 	1
+Presentation error 	1
+Wrong answer 	0
+Restricted function 	0
+Time limit exceeded 	0
+Compilation error 	1
+Best time 	0.029 secs.
+
+Overall statistics
+Times submitted 	3953
+Times solved 	968
+Users submitted 	958
+Users solved 	736
+Best time 	0.000 secs.
+C C++ JAVA PASCAL 	
