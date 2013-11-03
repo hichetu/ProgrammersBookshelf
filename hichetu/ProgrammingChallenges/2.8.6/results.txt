@@ -1,0 +1,28 @@
+Problem: Erdös Numbers (110206) 	Status: Solved
+
+
+Your submission history
+ID 	Time 	Verdict 	Runtime 	Lang
+514842 	13/11/03 05:14 	Compilation error 	0.000 secs. 	CPP
+514843 	13/11/03 05:15 	Wrong answer 	0.052 secs. 	CPP
+514908 	13/11/03 19:11 	Wrong answer 	0.329 secs. 	CPP
+514910 	13/11/03 19:23 	Wrong answer 	0.319 secs. 	CPP
+514911 	13/11/03 19:35 	Solved 	0.272 secs. 	CPP
+514912 	13/11/03 19:41 	Solved 	0.309 secs. 	CPP
+	Your statistics
+Times submitted 	6
+Solved 	2
+Presentation error 	0
+Wrong answer 	3
+Restricted function 	0
+Time limit exceeded 	0
+Compilation error 	1
+Best time 	0.272 secs.
+
+Overall statistics
+Times submitted 	6002
+Times solved 	925
+Users submitted 	751
+Users solved 	345
+Best time 	0.082 secs.
+C C++ JAVA PASCAL 	
