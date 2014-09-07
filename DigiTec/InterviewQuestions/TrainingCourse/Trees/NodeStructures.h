@@ -37,6 +37,10 @@ public:
 	{
 		m_parent = node;
 	}
+	FullNode<TValue>* GetParent()
+	{
+		return m_parent;
+	}
 	void SetLeft(FullNode<TValue>* node)
 	{
 		m_left = node;
