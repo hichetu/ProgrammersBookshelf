@@ -163,6 +163,40 @@ void PrintPostOrderRecursive(FullNode<int>* root)
 		wprintf(L"%d", root->GetValue());
 	}
 }
+void PrintPostOrderIterativeStack(FullNode<int>* root)
+{
+    vector<FullNode<int>*> stack;
+    FullNode<int>* current = root;
+    FullNode<int>* prev = nullptr;
+    while (stack.size() > 0 || current != nullptr)
+    {
+        // First iterates down the left sub-tree
+        if (current != nullptr)
+        {
+            stack.push_back(current);
+            current = current->GetLeft();
+        }
+        else
+        {
+            // Peek back, but don't remove it just yet.
+            current = stack.back();
+
+            // If we get here then our last current didn't have a left sub-tree
+            if (current->GetRight() == nullptr || current->GetRight() == prev)
+            {
+                stack.erase(stack.end() - 1);
+                wprintf(L"%d", current->GetValue());
+
+                prev = current;
+                current = nullptr;
+            }
+            else
+            {
+                current = current->GetRight();
+            }
+        }
+    }
+}
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -171,25 +205,41 @@ int _tmain(int argc, _TCHAR* argv[])
 	Tree<TrickyNode<int>> trickyTree(new TrickyNode<int>());
 
 	Tree<FullNode<int>>* newTree = TreeConstructor(L"0-l1,0-r2,1-l3,1-r4,2-l5,2-r6");
-	
+
+    wprintf(L"PreOrder:\n");
+    newTree = TreeConstructor(L"0-l1,0-r2,1-l3,1-r4,2-l5,2-r6");
 	PrintPreOrderRecursive(newTree->Root()); wprintf(L"\n");
 	PrintPreOrderIterativeStack(newTree->Root()); wprintf(L"\n");
 
-	PrintInOrderRecursive(newTree->Root()); wprintf(L"\n");
+    wprintf(L"InOrder:\n");
+    newTree = TreeConstructor(L"0-l1,0-r2,1-l3,1-r4,2-l5,2-r6");
+    PrintInOrderRecursive(newTree->Root()); wprintf(L"\n");
 	PrintInOrderIterativeStack(newTree->Root()); wprintf(L"\n");
 
-	PrintPostOrderRecursive(newTree->Root()); wprintf(L"\n");
+    wprintf(L"PostOrder:\n");
+    newTree = TreeConstructor(L"0-l1,0-r2,1-l3,1-r4,2-l5,2-r6");
+    PrintPostOrderRecursive(newTree->Root()); wprintf(L"\n");
+    PrintPostOrderIterativeStack(newTree->Root()); wprintf(L"\n");
+    newTree = TreeConstructor(L"0-l1,0-r2,1-l3,2-r4,3-l5,4-r6,5-l7,6-l8,6-r9");
+    PrintPostOrderRecursive(newTree->Root()); wprintf(L"\n");
+    PrintPostOrderIterativeStack(newTree->Root()); wprintf(L"\n");
+    newTree = TreeConstructor(L"0-l1,0-r2,1-l3,1-r4,2-l5,2-r6,3-r7,4-l8,5-l9,6-r10");
+    PrintPostOrderRecursive(newTree->Root()); wprintf(L"\n");
+    PrintPostOrderIterativeStack(newTree->Root()); wprintf(L"\n");
 
-	PrintBFSIterativeQueue(newTree->Root()); wprintf(L"\n");
+    wprintf(L"BFS:\n");
+    newTree = TreeConstructor(L"0-l1,0-r2,1-l3,1-r4,2-l5,2-r6");
+    PrintBFSIterativeQueue(newTree->Root()); wprintf(L"\n");
 	PrintBFSLogLinear(newTree->Root()); wprintf(L"\n");
+    newTree = TreeConstructor(L"0-l1,0-r2,1-l3,2-r4,3-l5,4-r6,5-l7,6-l8,6-r9");
+    PrintBFSIterativeQueue(newTree->Root()); wprintf(L"\n");
+    PrintBFSLogLinear(newTree->Root()); wprintf(L"\n");
 
+    wprintf(L"Zig Zag:\n");
+    newTree = TreeConstructor(L"0-l1,0-r2,1-l3,1-r4,2-l5,2-r6");
+    PrintZigZagTree(newTree->Root()); wprintf(L"\n");
+    newTree = TreeConstructor(L"0-l1,0-r2,1-l3,1-r4,2-l5,2-r6,3-r7,4-l8,5-l9,6-r10");
 	PrintZigZagTree(newTree->Root()); wprintf(L"\n");
-	newTree = TreeConstructor(L"0-l1,0-r2,1-l3,1-r4,2-l5,2-r6,3-r7,4-l8,5-l9,6-r10");
-	PrintZigZagTree(newTree->Root()); wprintf(L"\n");
-
-	newTree = TreeConstructor(L"0-l1,0-r2,1-l3,2-r4,3-l5,4-r6,5-l7,6-l8,6-r9");
-	PrintBFSIterativeQueue(newTree->Root()); wprintf(L"\n");
-	PrintBFSLogLinear(newTree->Root()); wprintf(L"\n");
 
 	getchar();
 
