@@ -218,6 +218,51 @@ void PrintInOrderParentPointer(FullNode<int>* root)
         }
     }
 }
+void PrintInOrderParentPointer_Reduced(FullNode<int>* root)
+{
+    FullNode<int>* current = root;
+    FullNode<int>* prev = nullptr;
+
+    while (current != nullptr)
+    {
+        // Works for root since m_parent == nullptr.
+        if (prev == current->GetParent())
+        {
+            if (current->GetLeft() != nullptr)
+            {
+                prev = current;
+                current = current->GetLeft();
+                continue;
+            }
+            else
+            {
+                prev = nullptr;
+            }
+        }
+
+        if (prev == current->GetLeft())
+        {
+            // Otherwise we came from our left and we need to print
+            // Due to our prev = nullptr in the prev == GetParent() call this also works
+            // when we don't have a left sub-tree.
+            wprintf(L"%d", current->GetValue());
+
+            if (current->GetRight() != nullptr)
+            {
+                prev = current;
+                current = current->GetRight();
+                continue;
+            }
+            else
+            {
+                prev = nullptr;
+            }
+        }
+        
+        prev = current;
+        current = current->GetParent();
+    }
+}
 
 void PrintInOrderIterativeStack(FullNode<int>* root)
 {
@@ -342,9 +387,11 @@ int _tmain(int argc, _TCHAR* argv[])
     PrintInOrderRecursive(simpleTree->Root()); wprintf(L"\n");
     PrintInOrderIterativeStack(simpleTree->Root()); wprintf(L"\n");
     PrintInOrderParentPointer(simpleTree->Root()); wprintf(L"\n");
+    PrintInOrderParentPointer_Reduced(simpleTree->Root()); wprintf(L"\n");
     PrintInOrderRecursive(deepTree->Root()); wprintf(L"\n");
     PrintInOrderIterativeStack(deepTree->Root()); wprintf(L"\n");
     PrintInOrderParentPointer(deepTree->Root()); wprintf(L"\n");
+    PrintInOrderParentPointer_Reduced(deepTree->Root()); wprintf(L"\n");
 
     wprintf(L"PostOrder:\n");
     PrintPostOrderRecursive(simpleTree->Root()); wprintf(L"\n");
