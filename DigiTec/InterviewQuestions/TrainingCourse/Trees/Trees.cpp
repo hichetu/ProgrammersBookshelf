@@ -185,6 +185,8 @@ void PrintInOrderParentPointer(FullNode<int>* root)
             }
             else if (current->GetRight() != nullptr)
             {
+                // If we came from our parent, and don't have a left sub-tree we must print now.
+                wprintf(L"%d", current->GetValue());
                 current = current->GetRight();
             }
             else
@@ -332,11 +334,17 @@ int _tmain(int argc, _TCHAR* argv[])
 	PrintPreOrderRecursive(simpleTree->Root()); wprintf(L"\n");
     PrintPreOrderIterativeStack(simpleTree->Root()); wprintf(L"\n");
     PrintPreOrderParentPointer(simpleTree->Root()); wprintf(L"\n");
+    PrintPreOrderRecursive(deepTree->Root()); wprintf(L"\n");
+    PrintPreOrderIterativeStack(deepTree->Root()); wprintf(L"\n");
+    PrintPreOrderParentPointer(deepTree->Root()); wprintf(L"\n");
 
     wprintf(L"InOrder:\n");
     PrintInOrderRecursive(simpleTree->Root()); wprintf(L"\n");
     PrintInOrderIterativeStack(simpleTree->Root()); wprintf(L"\n");
     PrintInOrderParentPointer(simpleTree->Root()); wprintf(L"\n");
+    PrintInOrderRecursive(deepTree->Root()); wprintf(L"\n");
+    PrintInOrderIterativeStack(deepTree->Root()); wprintf(L"\n");
+    PrintInOrderParentPointer(deepTree->Root()); wprintf(L"\n");
 
     wprintf(L"PostOrder:\n");
     PrintPostOrderRecursive(simpleTree->Root()); wprintf(L"\n");
