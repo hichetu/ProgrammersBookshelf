@@ -324,47 +324,43 @@ int _tmain(int argc, _TCHAR* argv[])
 	Tree<MAryNode<int, 3>> mAryTree(new MAryNode<int, 3>());
 	Tree<TrickyNode<int>> trickyTree(new TrickyNode<int>());
 
-	Tree<FullNode<int>>* newTree = TreeConstructor(L"0-l1,0-r2,1-l3,1-r4,2-l5,2-r6");
+	Tree<FullNode<int>>* simpleTree = TreeConstructor(L"0-l1,0-r2,1-l3,1-r4,2-l5,2-r6");
+    Tree<FullNode<int>>* deepTree = TreeConstructor(L"0-l1,0-r2,1-l3,2-r4,3-l5,4-r6,5-l7,6-l8,6-r9");
+    Tree<FullNode<int>>* sparseTree = TreeConstructor(L"0-l1,0-r2,1-l3,1-r4,2-l5,2-r6,3-r7,4-l8,5-l9,6-r10");
 
     wprintf(L"PreOrder:\n");
-    newTree = TreeConstructor(L"0-l1,0-r2,1-l3,1-r4,2-l5,2-r6");
-	PrintPreOrderRecursive(newTree->Root()); wprintf(L"\n");
-	PrintPreOrderIterativeStack(newTree->Root()); wprintf(L"\n");
-    PrintPreOrderParentPointer(newTree->Root()); wprintf(L"\n");
+	PrintPreOrderRecursive(simpleTree->Root()); wprintf(L"\n");
+    PrintPreOrderIterativeStack(simpleTree->Root()); wprintf(L"\n");
+    PrintPreOrderParentPointer(simpleTree->Root()); wprintf(L"\n");
 
     wprintf(L"InOrder:\n");
-    newTree = TreeConstructor(L"0-l1,0-r2,1-l3,1-r4,2-l5,2-r6");
-    PrintInOrderRecursive(newTree->Root()); wprintf(L"\n");
-	PrintInOrderIterativeStack(newTree->Root()); wprintf(L"\n");
-    PrintInOrderParentPointer(newTree->Root()); wprintf(L"\n");
+    PrintInOrderRecursive(simpleTree->Root()); wprintf(L"\n");
+    PrintInOrderIterativeStack(simpleTree->Root()); wprintf(L"\n");
+    PrintInOrderParentPointer(simpleTree->Root()); wprintf(L"\n");
 
     wprintf(L"PostOrder:\n");
-    newTree = TreeConstructor(L"0-l1,0-r2,1-l3,1-r4,2-l5,2-r6");
-    PrintPostOrderRecursive(newTree->Root()); wprintf(L"\n");
-    PrintPostOrderIterativeStack(newTree->Root()); wprintf(L"\n");
-    PrintPostOrderParentPointer(newTree->Root()); wprintf(L"\n");
-    newTree = TreeConstructor(L"0-l1,0-r2,1-l3,2-r4,3-l5,4-r6,5-l7,6-l8,6-r9");
-    PrintPostOrderRecursive(newTree->Root()); wprintf(L"\n");
-    PrintPostOrderIterativeStack(newTree->Root()); wprintf(L"\n");
-    PrintPostOrderParentPointer(newTree->Root()); wprintf(L"\n");
-    newTree = TreeConstructor(L"0-l1,0-r2,1-l3,1-r4,2-l5,2-r6,3-r7,4-l8,5-l9,6-r10");
-    PrintPostOrderRecursive(newTree->Root()); wprintf(L"\n");
-    PrintPostOrderIterativeStack(newTree->Root()); wprintf(L"\n");
-    PrintPostOrderParentPointer(newTree->Root()); wprintf(L"\n");
+    PrintPostOrderRecursive(simpleTree->Root()); wprintf(L"\n");
+    PrintPostOrderIterativeStack(simpleTree->Root()); wprintf(L"\n");
+    PrintPostOrderParentPointer(simpleTree->Root()); wprintf(L"\n");
+    PrintPostOrderRecursive(deepTree->Root()); wprintf(L"\n");
+    PrintPostOrderIterativeStack(deepTree->Root()); wprintf(L"\n");
+    PrintPostOrderParentPointer(deepTree->Root()); wprintf(L"\n");
+    PrintPostOrderRecursive(sparseTree->Root()); wprintf(L"\n");
+    PrintPostOrderIterativeStack(sparseTree->Root()); wprintf(L"\n");
+    PrintPostOrderParentPointer(sparseTree->Root()); wprintf(L"\n");
 
     wprintf(L"BFS:\n");
-    newTree = TreeConstructor(L"0-l1,0-r2,1-l3,1-r4,2-l5,2-r6");
-    PrintBFSIterativeQueue(newTree->Root()); wprintf(L"\n");
-	PrintBFSLogLinear(newTree->Root()); wprintf(L"\n");
-    newTree = TreeConstructor(L"0-l1,0-r2,1-l3,2-r4,3-l5,4-r6,5-l7,6-l8,6-r9");
-    PrintBFSIterativeQueue(newTree->Root()); wprintf(L"\n");
-    PrintBFSLogLinear(newTree->Root()); wprintf(L"\n");
+    PrintBFSIterativeQueue(simpleTree->Root()); wprintf(L"\n");
+	PrintBFSLogLinear(simpleTree->Root()); wprintf(L"\n");
+    PrintBFSIterativeQueue(deepTree->Root()); wprintf(L"\n");
+    PrintBFSLogLinear(deepTree->Root()); wprintf(L"\n");
+    PrintBFSIterativeQueue(sparseTree->Root()); wprintf(L"\n");
+    PrintBFSLogLinear(sparseTree->Root()); wprintf(L"\n");
 
     wprintf(L"Zig Zag:\n");
-    newTree = TreeConstructor(L"0-l1,0-r2,1-l3,1-r4,2-l5,2-r6");
-    PrintZigZagTree(newTree->Root()); wprintf(L"\n");
-    newTree = TreeConstructor(L"0-l1,0-r2,1-l3,1-r4,2-l5,2-r6,3-r7,4-l8,5-l9,6-r10");
-	PrintZigZagTree(newTree->Root()); wprintf(L"\n");
+    PrintZigZagTree(simpleTree->Root()); wprintf(L"\n");
+    PrintZigZagTree(deepTree->Root()); wprintf(L"\n");
+    PrintZigZagTree(sparseTree->Root()); wprintf(L"\n");
 
 	getchar();
 
