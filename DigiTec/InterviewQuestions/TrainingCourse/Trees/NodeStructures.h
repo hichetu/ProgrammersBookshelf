@@ -25,6 +25,23 @@ public:
 	{
 	}
 
+	void SetValue(const TValue& value)
+	{
+		m_value = value;
+	}
+	void SetParent(FullNode<TValue>* node)
+	{
+		m_parent = node;
+	}
+	void SetLeft(FullNode<TValue>* node)
+	{
+		m_left = node;
+	}
+	void SetRight(FullNode<TValue>* node)
+	{
+		m_right = node;
+	}
+
 private:
 	TValue m_value;
 	FullNode<TValue>* m_parent;
