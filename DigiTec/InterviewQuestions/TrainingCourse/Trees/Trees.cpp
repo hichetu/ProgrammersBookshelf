@@ -183,6 +183,14 @@ int _tmain(int argc, _TCHAR* argv[])
 	PrintBFSIterativeQueue(newTree->Root()); wprintf(L"\n");
 	PrintBFSLogLinear(newTree->Root()); wprintf(L"\n");
 
+	PrintZigZagTree(newTree->Root()); wprintf(L"\n");
+	newTree = TreeConstructor(L"0-l1,0-r2,1-l3,1-r4,2-l5,2-r6,3-r7,4-l8,5-l9,6-r10");
+	PrintZigZagTree(newTree->Root()); wprintf(L"\n");
+
+	newTree = TreeConstructor(L"0-l1,0-r2,1-l3,2-r4,3-l5,4-r6,5-l7,6-l8,6-r9");
+	PrintBFSIterativeQueue(newTree->Root()); wprintf(L"\n");
+	PrintBFSLogLinear(newTree->Root()); wprintf(L"\n");
+
 	getchar();
 
 	return 0;

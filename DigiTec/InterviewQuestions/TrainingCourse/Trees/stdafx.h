@@ -13,5 +13,6 @@
 #include <vector>
 #include "NodeStructures.h"
 #include "BFSAlgorithms.h"
+#include "BFSQuestions.h"
 
 using namespace std;
