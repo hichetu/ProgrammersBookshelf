@@ -170,3 +170,4 @@ private:
 	bool m_isLeftChild;
 	bool m_hasNextSibling;
 };
+

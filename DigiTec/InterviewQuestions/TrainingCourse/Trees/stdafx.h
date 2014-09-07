@@ -9,7 +9,9 @@
 
 #include <stdio.h>
 #include <tchar.h>
+#include <memory>
+#include <vector>
+#include "NodeStructures.h"
+#include "BFSAlgorithms.h"
 
-
-
-// TODO: reference additional headers your program requires here
+using namespace std;
