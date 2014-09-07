@@ -94,6 +94,79 @@ Tree<FullNode<int>>* TreeConstructor(const wchar_t* treeDefinition)
 	return newTree;
 }
 
+void PrintPreOrderRecursive(FullNode<int>* root)
+{
+	if (root != nullptr)
+	{
+		wprintf(L"%d", root->GetValue());
+		PrintPreOrderRecursive(root->GetLeft());
+		PrintPreOrderRecursive(root->GetRight());
+	}
+}
+void PrintPreOrderIterativeStack(FullNode<int>* root)
+{
+	vector<FullNode<int>*> stack;
+	stack.push_back(root);
+
+	while (stack.size() > 0)
+	{
+		FullNode<int>* node = stack.back();
+		stack.erase(stack.end() - 1);
+		
+		wprintf(L"%d", node->GetValue());
+		if (node->GetRight() != nullptr)
+		{
+			stack.push_back(node->GetRight());
+		}
+		if (node->GetLeft() != nullptr)
+		{
+			stack.push_back(node->GetLeft());
+		}
+	}
+}
+
+void PrintInOrderRecursive(FullNode<int>* root)
+{
+	if (root != nullptr)
+	{
+		PrintInOrderRecursive(root->GetLeft());
+		wprintf(L"%d", root->GetValue());
+		PrintInOrderRecursive(root->GetRight());
+	}
+}
+void PrintInOrderIterativeStack(FullNode<int>* root)
+{
+	vector<FullNode<int>*> stack;
+	FullNode<int>* current = root;
+	while (stack.size() > 0 || current != nullptr)
+	{
+		// First iterates down the left sub-tree
+		if (current != nullptr)
+		{
+			stack.push_back(current);
+			current = current->GetLeft();
+		}
+		else
+		{
+			// If we get here then our last current didn't have a left sub-tree
+			current = stack.back();
+			stack.erase(stack.end() - 1);
+			wprintf(L"%d", current->GetValue());
+			current = current->GetRight();
+		}
+	}
+}
+
+void PrintPostOrderRecursive(FullNode<int>* root)
+{
+	if (root != nullptr)
+	{
+		PrintPostOrderRecursive(root->GetLeft());
+		PrintPostOrderRecursive(root->GetRight());
+		wprintf(L"%d", root->GetValue());
+	}
+}
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	Tree<LinkNode<int>> linkTree(new LinkNode<int>());
@@ -101,6 +174,16 @@ int _tmain(int argc, _TCHAR* argv[])
 	Tree<TrickyNode<int>> trickyTree(new TrickyNode<int>());
 
 	Tree<FullNode<int>>* newTree = TreeConstructor(L"0-l1,0-r2,1-l3,1-r4,2-l5,2-r6");
+	
+	PrintPreOrderRecursive(newTree->Root()); wprintf(L"\n");
+	PrintPreOrderIterativeStack(newTree->Root()); wprintf(L"\n");
+
+	PrintInOrderRecursive(newTree->Root()); wprintf(L"\n");
+	PrintInOrderIterativeStack(newTree->Root()); wprintf(L"\n");
+
+	PrintPostOrderRecursive(newTree->Root()); wprintf(L"\n");
+
+	getchar();
 
 	return 0;
 }
