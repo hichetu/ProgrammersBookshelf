@@ -385,6 +385,25 @@ FullNode<int>* FindNode(FullNode<int>* root, int value)
         return FindNode(root->GetRight(), value);
     }
 }
+FullNode<int>* FindNodeIterative(FullNode<int>* root, int value)
+{
+    while (root != nullptr)
+    {
+        if (root->GetValue() == value)
+        {
+            break;
+        }
+        if (root->GetValue() > value)
+        {
+            root = root->GetLeft();
+        }
+        else
+        {
+            root = root->GetRight();
+        }
+    }
+    return root;
+}
 
 int _tmain(int argc, _TCHAR* argv[])
 {
