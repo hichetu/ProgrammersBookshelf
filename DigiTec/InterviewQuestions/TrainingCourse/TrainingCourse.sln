@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Trees", "Trees\Trees.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StringsRegex", "StringsRegex\StringsRegex.vcxproj", "{621AC0B6-D1D6-44CF-9042-3592A84BFD66}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LeetCodeQuestions", "LeetCodeQuestions\LeetCodeQuestions.vcxproj", "{29D499DC-853C-487D-91FA-FE74BA38BF2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -21,6 +23,10 @@ Global
 		{621AC0B6-D1D6-44CF-9042-3592A84BFD66}.Debug|Win32.Build.0 = Debug|Win32
 		{621AC0B6-D1D6-44CF-9042-3592A84BFD66}.Release|Win32.ActiveCfg = Release|Win32
 		{621AC0B6-D1D6-44CF-9042-3592A84BFD66}.Release|Win32.Build.0 = Release|Win32
+		{29D499DC-853C-487D-91FA-FE74BA38BF2C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{29D499DC-853C-487D-91FA-FE74BA38BF2C}.Debug|Win32.Build.0 = Debug|Win32
+		{29D499DC-853C-487D-91FA-FE74BA38BF2C}.Release|Win32.ActiveCfg = Release|Win32
+		{29D499DC-853C-487D-91FA-FE74BA38BF2C}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
