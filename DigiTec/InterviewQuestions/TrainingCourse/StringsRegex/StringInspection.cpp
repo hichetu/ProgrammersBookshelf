@@ -134,9 +134,13 @@ bool isPunctuation(const wchar_t* inStr)
     case L'\t':
     case L'.':
     case L',':
+    case L';':
+    case L':':
     case L'\"':
     case L'\'':
     case L'?':
+    case L'-':
+    case L'!':
         return true;
     }
     return false;
@@ -160,7 +164,7 @@ bool isPalindromeSentence(const wchar_t* inStr)
         {
             pEnd--;
         }
-        if (*inStr++ != *pEnd--)
+        if (towlower(*inStr++) != towlower(*pEnd--))
         {
             return false;
         }
