@@ -103,3 +103,67 @@ bool isOnly3LettersImproved(const wchar_t* inStr)
     }
     return true;
 }
+
+// Question #3
+// This is another question that determines if you understand how pointers function.The solution here can be generalized to other 
+// problems as well as you’ll see later.Make sure you clarify with the interviewer if whitespace is significant in the matching.
+// Also, make sure you clarify if case insensitivity is important or not and account for that in your algorithm.
+bool isPalindrome(const wchar_t* inStr)
+{
+    const wchar_t* pEnd = inStr;
+    while (*pEnd != L'\0')
+    {
+        ++pEnd;
+    }
+    pEnd--; // Back off the null terminator
+    while (inStr < pEnd)
+    {
+        if (*inStr++ != *pEnd--)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool isPunctuation(const wchar_t* inStr)
+{
+    switch (*inStr)
+    {
+    case L' ':
+    case L'\t':
+    case L'.':
+    case L',':
+    case L'\"':
+    case L'\'':
+    case L'?':
+        return true;
+    }
+    return false;
+}
+bool isPalindromeSentence(const wchar_t* inStr)
+{
+    const wchar_t* pEnd = inStr;
+    while (*pEnd != L'\0')
+    {
+        ++pEnd;
+    }
+    pEnd--; // Back off the null terminator
+
+    while (inStr < pEnd)
+    {
+        while (inStr < pEnd && isPunctuation(inStr))
+        {
+            inStr++;
+        }
+        while (pEnd > inStr && isPunctuation(pEnd))
+        {
+            pEnd--;
+        }
+        if (*inStr++ != *pEnd--)
+        {
+            return false;
+        }
+    }
+    return true;
+}
