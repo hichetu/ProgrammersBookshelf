@@ -53,5 +53,8 @@
     <ClCompile Include="BestTimeToBuyAndSellStock2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BestTimeToBuyAndSellStock3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
