@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BestTimeToBuyAndSellStock.cpp" />
+    <ClCompile Include="BestTimeToBuyAndSellStock2.cpp" />
     <ClCompile Include="BinaryLevelOrderTraversal.cpp" />
     <ClCompile Include="LargestRectangleInHistogram.cpp" />
     <ClCompile Include="LeetCodeQuestions.cpp" />

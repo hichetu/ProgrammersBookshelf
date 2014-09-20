@@ -35,3 +35,7 @@ namespace BestTimeToBuyAndSellStock
 {
     void RunTests();
 }
+namespace BestTimeToBuyAndSellStock2
+{
+    void RunTests();
+}
