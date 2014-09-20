@@ -27,3 +27,7 @@ namespace WordLadder
 {
     void RunTests();
 }
+namespace BinaryLevelOrderTraversal
+{
+    void RunTests();
+}

@@ -7,7 +7,8 @@
 int _tmain(int argc, _TCHAR* argv[])
 {
     // ReverseWordsInAString::RunTests();
-    WordLadder::RunTests();
+    // WordLadder::RunTests();
+    BinaryLevelOrderTraversal::RunTests();
 
     /*
     vector<int> heights { 2, 1, 5, 6, 2, 3 };
