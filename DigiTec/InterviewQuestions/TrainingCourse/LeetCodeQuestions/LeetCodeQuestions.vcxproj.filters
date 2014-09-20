@@ -47,5 +47,8 @@
     <ClCompile Include="BinaryLevelOrderTraversal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BestTimeToBuyAndSellStock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

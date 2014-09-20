@@ -31,3 +31,7 @@ namespace BinaryLevelOrderTraversal
 {
     void RunTests();
 }
+namespace BestTimeToBuyAndSellStock
+{
+    void RunTests();
+}
