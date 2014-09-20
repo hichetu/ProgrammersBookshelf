@@ -11,7 +11,19 @@
 #include <tchar.h>
 #include <vector>
 #include <algorithm>
+#include <set>
+#include <unordered_set>
+#include <map>
 
 using namespace std;
 
 #include "LargestRectangleInHistogram.h"
+
+namespace ReverseWordsInAString
+{
+    void RunTests();
+}
+namespace WordLadder
+{
+    void RunTests();
+}
