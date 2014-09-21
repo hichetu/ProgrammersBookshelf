@@ -8,9 +8,10 @@ int _tmain(int argc, _TCHAR* argv[])
 {
     // ReverseWordsInAString::RunTests();
     // WordLadder::RunTests();
+    WordLadder2::RunTests();
     // BestTimeToBuyAndSellStock::RunTests();
     // BestTimeToBuyAndSellStock2::RunTests();
-    BestTimeToBuyAndSellStock3::RunTests();
+    // BestTimeToBuyAndSellStock3::RunTests();
     // BinaryLevelOrderTraversal::RunTests();
 
     /*
