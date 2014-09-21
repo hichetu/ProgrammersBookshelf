@@ -23,7 +23,7 @@ namespace WordLadder2
             // If our final word isn't in the dictionary then we can't complete
             dict.insert(start);
             dict.insert(end);
-            
+             
             BuildDiffersByOne(dict);
 
             vector<Path*>* rightPaths = new vector<Path*>();
