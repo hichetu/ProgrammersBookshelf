@@ -47,36 +47,66 @@ namespace WordLadder2
 
             do
             {
-                map<string, const Path*> terminalLeftPaths;
-                for (const Path* curPath : *rightPaths)
                 {
-                    BFSMap(curPath, usedDictRight, newRightPaths);
-                }
-                for (const Path* curPath : *leftPaths)
-                {
-                    BFSMap(curPath, usedDictLeft, newLeftPaths);
-                }
-
-                for (const Path* checkPath : *newLeftPaths)
-                {
-                    usedDictLeft.insert(checkPath->word);
-
-                    terminalLeftPaths.insert(pair<string, const Path*>(checkPath->word, checkPath));
-                }
-                for (const Path* checkPath : *newRightPaths)
-                {
-                    usedDictRight.insert(checkPath->word);
-
-                    auto it = terminalLeftPaths.find(checkPath->word);
-                    if (it != terminalLeftPaths.end())
+                    map<string, const Path*> terminalPaths;
+                    for (const Path* curPath : *rightPaths)
                     {
-                        results.push_back(BuildResultFromPaths((*it).second, checkPath));
+                        BFSMap(curPath, usedDictRight, newRightPaths);
+                    }
+                    for (const Path* checkPath : *leftPaths)
+                    {
+                        terminalPaths.insert(pair<string, const Path*>(checkPath->word, checkPath));
+                    }
+                    for (const Path* checkPath : *newRightPaths)
+                    {
+                        usedDictRight.insert(checkPath->word);
+                        auto it = terminalPaths.find(checkPath->word);
+                        if (it != terminalPaths.end())
+                        {
+                            for (const Path* rebuildPath : *leftPaths)
+                            {
+                                if (rebuildPath->word == checkPath->word)
+                                {
+                                    results.push_back(BuildResultFromPaths(rebuildPath, checkPath));
+                                }
+                            }
+                        }
+                    }
+                    if (results.size() > 0)
+                    {
+                        break;
                     }
                 }
-
-                if (results.size() > 0)
                 {
-                    break;
+                    map<string, const Path*> terminalPaths;
+                    for (const Path* curPath : *leftPaths)
+                    {
+                        BFSMap(curPath, usedDictLeft, newLeftPaths);
+                    }
+                    for (const Path* checkPath : *newRightPaths)
+                    {
+                        terminalPaths.insert(pair<string, const Path*>(checkPath->word, checkPath));
+                    }
+                    for (const Path* checkPath : *newLeftPaths)
+                    {
+                        usedDictLeft.insert(checkPath->word);
+
+                        auto it = terminalPaths.find(checkPath->word);
+                        if (it != terminalPaths.end())
+                        {
+                            for (const Path* rebuildPath : *newRightPaths)
+                            {
+                                if (checkPath->word == rebuildPath->word)
+                                {
+                                    results.push_back(BuildResultFromPaths(checkPath, rebuildPath));
+                                }
+                            }
+                        }
+                    }
+                    if (results.size() > 0)
+                    {
+                        break;
+                    }
                 }
 
                 delete leftPaths;
@@ -109,12 +139,12 @@ namespace WordLadder2
             }
         }
 
-        bool differsByOne(const string& str1, const string& str2)
+        bool differsByOne(const char* str1, const char* str2)
         {
             bool differentByOne = false;
-            for (int i = 0; i < str1.size(); i++)
+            while (*str1 != '\0')
             {
-                if (str1[i] != str2[i])
+                if (*str1++ != *str2++)
                 {
                     if (differentByOne)
                     {
@@ -146,7 +176,7 @@ namespace WordLadder2
             return vec;
         }
 
-        void BuildDiffersByOne(unordered_set<string> dict)
+        void BuildDiffersByOne(unordered_set<string>& dict)
         {
             dictMap.clear();
 
@@ -158,10 +188,12 @@ namespace WordLadder2
 
             for (int i = 0; i < dictAry.size() - 1; i++)
             {
+                const char* leftStr = dictAry[i].c_str();
                 vector<string>* leftVector = dictMap[dictAry[i]];
                 for (int j = (i + 1); j < dictAry.size(); j++)
                 {
-                    if (differsByOne(dictAry[i], dictAry[j]))
+                    const char* rightStr = dictAry[j].c_str();
+                    if (differsByOne(leftStr, rightStr))
                     {
                         leftVector->push_back(dictAry[j]);
                         dictMap[dictAry[j]]->push_back(dictAry[i]);
@@ -174,6 +206,14 @@ namespace WordLadder2
     
     void RunTests()
     {
+        string test0start = "a";
+        string test0end = "c";
+        unordered_set<string> test0dict = { "a", "b", "c" };
+        Solution s0;
+        vector<vector<string>> r0 = s0.findLadders(test0start, test0end, test0dict);
+        _ASSERT(r0.size() == 1);
+        _ASSERT(r0[0].size() == 2);
+
         string test1start = "hit";
         string test1end = "cog";
         unordered_set<string> test1dict = { "hot", "dot", "dog", "lot", "log" };
@@ -197,6 +237,14 @@ namespace WordLadder2
         DWORD start = ::GetTickCount();
         vector<vector<string>> r3 = s2.findLadders(test3start, test3end, test3dict);
         wprintf(L"%d - ms, results %d\n", ::GetTickCount() - start, r3.size());
+        for (const vector<string>& results : r3)
+        {
+            for (const string& result : results)
+            {
+                printf("%s ", result.c_str());
+            }
+            printf("\n");
+        }
 
         Solution s4;
         string test4start = "nape";
@@ -207,6 +255,23 @@ namespace WordLadder2
         vector<vector<string>> r4 = s4.findLadders(test4start, test4end, test4dict);
         wprintf(L"%d - ms, results %d\n", ::GetTickCount() - start, r4.size());
         for (const vector<string>& results : r4)
+        {
+            for (const string& result : results)
+            {
+                printf("%s ", result.c_str());
+            }
+            printf("\n");
+        }
+
+        Solution s5;
+        string test5start = "magic";
+        string test5end = "pearl";
+        unordered_set<string> test5dict = { "flail", "halon", "lexus", "joint", "pears", "slabs", "lorie", "lapse", "wroth", "yalow", "swear", "cavil", "piety", "yogis", "dhaka", "laxer", "tatum", "provo", "truss", "tends", "deana", "dried", "hutch", "basho", "flyby", "miler", "fries", "floes", "lingo", "wider", "scary", "marks", "perry", "igloo", "melts", "lanny", "satan", "foamy", "perks", "denim", "plugs", "cloak", "cyril", "women", "issue", "rocky", "marry", "trash", "merry", "topic", "hicks", "dicky", "prado", "casio", "lapel", "diane", "serer", "paige", "parry", "elope", "balds", "dated", "copra", "earth", "marty", "slake", "balms", "daryl", "loves", "civet", "sweat", "daley", "touch", "maria", "dacca", "muggy", "chore", "felix", "ogled", "acids", "terse", "cults", "darla", "snubs", "boats", "recta", "cohan", "purse", "joist", "grosz", "sheri", "steam", "manic", "luisa", "gluts", "spits", "boxer", "abner", "cooke", "scowl", "kenya", "hasps", "roger", "edwin", "black", "terns", "folks", "demur", "dingo", "party", "brian", "numbs", "forgo", "gunny", "waled", "bucks", "titan", "ruffs", "pizza", "ravel", "poole", "suits", "stoic", "segre", "white", "lemur", "belts", "scums", "parks", "gusts", "ozark", "umped", "heard", "lorna", "emile", "orbit", "onset", "cruet", "amiss", "fumed", "gelds", "italy", "rakes", "loxed", "kilts", "mania", "tombs", "gaped", "merge", "molar", "smith", "tangs", "misty", "wefts", "yawns", "smile", "scuff", "width", "paris", "coded", "sodom", "shits", "benny", "pudgy", "mayer", "peary", "curve", "tulsa", "ramos", "thick", "dogie", "gourd", "strop", "ahmad", "clove", "tract", "calyx", "maris", "wants", "lipid", "pearl", "maybe", "banjo", "south", "blend", "diana", "lanai", "waged", "shari", "magic", "duchy", "decca", "wried", "maine", "nutty", "turns", "satyr", "holds", "finks", "twits", "peaks", "teems", "peace", "melon", "czars", "robby", "tabby", "shove", "minty", "marta", "dregs", "lacks", "casts", "aruba", "stall", "nurse", "jewry", "knuth" };
+
+        start = ::GetTickCount();
+        vector<vector<string>> r5 = s5.findLadders(test5start, test5end, test5dict);
+        wprintf(L"%d - ms, results %d\n", ::GetTickCount() - start, r5.size());
+        for (const vector<string>& results : r5)
         {
             for (const string& result : results)
             {
