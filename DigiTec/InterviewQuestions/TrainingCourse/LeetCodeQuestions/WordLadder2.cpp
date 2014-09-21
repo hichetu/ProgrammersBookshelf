@@ -5,7 +5,8 @@ namespace WordLadder2
 {
     struct Path
     {
-        vector<string> used_words;
+        string word;
+        const Path* rest_path;
     };
 
     class Solution
@@ -25,52 +26,51 @@ namespace WordLadder2
             
             BuildDiffersByOne(dict);
 
-            vector<Path>* rightPaths = new vector<Path>();
-            vector<Path>* newRightPaths = new vector<Path>();
-            vector<Path>* leftPaths = new vector<Path>();
-            vector<Path>* newLeftPaths = new vector<Path>();
-            map<string, bool> usedDictLeft;
-            map<string, bool> usedDictRight;
+            vector<Path*>* rightPaths = new vector<Path*>();
+            vector<Path*>* newRightPaths = new vector<Path*>();
+            vector<Path*>* leftPaths = new vector<Path*>();
+            vector<Path*>* newLeftPaths = new vector<Path*>();
+            unordered_set<string> usedDictLeft;
+            unordered_set<string> usedDictRight;
 
             Path p;
-            p.used_words.push_back(end);
-            usedDictRight.insert(pair<string, bool>(end, true));
-            rightPaths->push_back(p);
+            p.word = end;
+            p.rest_path = nullptr;
+            usedDictRight.insert(end);
+            rightPaths->push_back(&p);
 
             Path p2;
-            p2.used_words.push_back(start);
-            usedDictLeft.insert(pair<string, bool>(start, true));
-            leftPaths->push_back(p2);
+            p2.word = start;
+            p2.rest_path = nullptr;
+            usedDictLeft.insert(start);
+            leftPaths->push_back(&p2);
 
             do
             {
-                map<string, Path> terminalLeftPaths;
-                for (const Path& curPath : *rightPaths)
+                map<string, const Path*> terminalLeftPaths;
+                for (const Path* curPath : *rightPaths)
                 {
                     BFSMap(curPath, usedDictRight, newRightPaths);
                 }
-                for (const Path& curPath : *leftPaths)
+                for (const Path* curPath : *leftPaths)
                 {
                     BFSMap(curPath, usedDictLeft, newLeftPaths);
                 }
 
-                for (const Path& checkPath : *newLeftPaths)
+                for (const Path* checkPath : *newLeftPaths)
                 {
-                    usedDictLeft.insert(pair<string, bool>(checkPath.used_words.front(), true));
+                    usedDictLeft.insert(checkPath->word);
 
-                    terminalLeftPaths.insert(pair<string, Path>(checkPath.used_words.front(), checkPath));
+                    terminalLeftPaths.insert(pair<string, const Path*>(checkPath->word, checkPath));
                 }
-                for (const Path& checkPath : *newRightPaths)
+                for (const Path* checkPath : *newRightPaths)
                 {
-                    usedDictRight.insert(pair<string, bool>(checkPath.used_words.front(), true));
+                    usedDictRight.insert(checkPath->word);
 
-                    auto it = terminalLeftPaths.find(checkPath.used_words.front());
+                    auto it = terminalLeftPaths.find(checkPath->word);
                     if (it != terminalLeftPaths.end())
                     {
-                        vector<string> result;
-                        result.insert(result.begin(), (*it).second.used_words.rbegin(), (*it).second.used_words.rend());
-                        result.insert(result.end(), checkPath.used_words.begin()+1, checkPath.used_words.end());
-                        results.push_back(result);
+                        results.push_back(BuildResultFromPaths((*it).second, checkPath));
                     }
                 }
 
@@ -85,25 +85,25 @@ namespace WordLadder2
                 leftPaths = newLeftPaths;
                 rightPaths = newRightPaths;
 
-                newLeftPaths = new vector<Path>();
-                newRightPaths = new vector<Path>();
+                newLeftPaths = new vector<Path*>();
+                newRightPaths = new vector<Path*>();
             }
             while (leftPaths->size() > 0 || rightPaths->size() > 0);
 
             return results;
         }
 
-        void BFSMap(const Path& curPath, map<string, bool>& usedDict, vector<Path>* newPaths)
+        void BFSMap(const Path* curPath, unordered_set<string>& usedDict, vector<Path*>* newPaths)
         {
-            const string& cur = curPath.used_words.front();
+            const string& cur = curPath->word;
             vector<string>* dict = dictMap[cur];
             for (const string& dictionary_entry : *dict)
             {
                 if (usedDict.find(dictionary_entry) == usedDict.end())
                 {
-                    Path newPath;
-                    newPath.used_words.push_back(dictionary_entry);
-                    newPath.used_words.insert(newPath.used_words.end(), curPath.used_words.begin(), curPath.used_words.end());
+                    Path* newPath = new Path();
+                    newPath->word = dictionary_entry;
+                    newPath->rest_path = curPath;
                     newPaths->push_back(newPath);
                 }
             }
@@ -127,6 +127,23 @@ namespace WordLadder2
                 }
             }
             return differentByOne;
+        }
+
+        vector<string> BuildResultFromPaths(const Path* pLeft, const Path* pRight)
+        {
+            vector<string> vec;
+            while (pLeft != nullptr)
+            {
+                vec.insert(vec.begin(), pLeft->word);
+                pLeft = pLeft->rest_path;
+            }
+            pRight = pRight->rest_path;
+            while (pRight != nullptr)
+            {
+                vec.push_back(pRight->word);
+                pRight = pRight->rest_path;
+            }
+            return vec;
         }
 
         void BuildDiffersByOne(unordered_set<string> dict)
