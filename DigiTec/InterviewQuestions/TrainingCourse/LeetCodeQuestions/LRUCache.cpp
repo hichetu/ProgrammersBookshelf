@@ -3,119 +3,61 @@
 
 namespace LRUCache
 {
-    struct Entry
-    {
-        int key;
-        int value;
-        Entry* next;
-        Entry* prev;
-
-        Entry() : key(0), value(0), next(nullptr), prev(nullptr)
-        {
-        }
-    };
-
     class LRUCache
     {
     public:
-        LRUCache(int capacity) : maxCapacity(capacity), currentCapacity(0), head(nullptr), tail(nullptr)
+        LRUCache(int capacity) : maxCapacity(capacity)
         {
 
         }
 
         int get(int key)
         {
-            auto it = entries.find(key);
+            map<int, int>::iterator it = entries.find(key);
             if (it != entries.end())
             {
-                Entry* currentEntry = (*it).second;
-                MoveFront(currentEntry);
-                return currentEntry->value;
+                int key = (*it).first;
+                int value = (*it).second;
+                FreshenUsage(key);
+                return value;
             }
-            else
-            { 
-                return -1;
-            }
+            return -1;
         }
 
-        void MoveFront(Entry* entry)
+        void FreshenUsage(int key)
         {
-            Entry* prev = entry->prev;
-            Entry* next = entry->next;
-            if (prev != nullptr)
-            {
-                prev->next = next;
-                if (prev->next == nullptr)
-                {
-                    tail = prev;
-                }
-            }
-            if (next != nullptr)
-            {
-                next->prev = prev;
-            }
-            entry->next = head;
-            if (head != nullptr)
-            {
-                head->prev = entry;
-            }
-            head = entry;
+            list<int>::iterator it = listNodes[key];
+            keys.erase(it);
+            keys.push_back(key);
+            listNodes[key] = --keys.end();
         }
 
         void set(int key, int value)
         {
-            auto it = entries.find(key);
+            map<int, int>::iterator it = entries.find(key);
             if (it != entries.end())
             {
-                Entry* currentEntry = (*it).second;
-                currentEntry->value = value;
-                MoveFront(currentEntry);
+                (*it).second = value;
+                FreshenUsage((*it).first);
             }
-            else
+            else 
             {
-                if (currentCapacity == maxCapacity && tail != nullptr)
+                if (entries.size() >= maxCapacity)
                 {
-                    currentCapacity--;
-
-                    Entry* currentTail = tail;
-                    entries.erase(currentTail->key);
-                    tail = currentTail->prev;
-                    if (tail != nullptr)
-                    {
-                        tail->next = nullptr;
-                    }
-                    else
-                    {
-                        head = nullptr;
-                    }
-                    delete currentTail;
+                    entries.erase(keys.front());
+                    listNodes.erase(keys.front());
+                    keys.pop_front();
                 }
 
-                if (maxCapacity > 0)
-                {
-                    currentCapacity++;
-                    Entry* newEntry = new Entry();
-                    newEntry->key = key;
-                    newEntry->value = value;
-                    entries.insert(pair<int, Entry*>(newEntry->key, newEntry));
-                    newEntry->next = head;
-                    if (head != nullptr)
-                    {
-                        head->prev = newEntry;
-                    }
-                    head = newEntry;
-                    if (tail == nullptr)
-                    {
-                        tail = head;
-                    }
-                }
+                entries[key] = value;
+                keys.push_back(key);
+                listNodes[key] = --keys.end();
             }
         }
 
-        map<int, Entry*> entries;
-        Entry* head;
-        Entry* tail;
-        int currentCapacity;
+        map<int, int> entries;
+        map<int, list<int>::iterator> listNodes;
+        list<int> keys;
         int maxCapacity;
     };
 
