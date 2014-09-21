@@ -55,3 +55,7 @@ namespace BestTimeToBuyAndSellStock3
 {
     void RunTests();
 }
+namespace LRUCache
+{
+    void RunTests();
+}

@@ -88,6 +88,7 @@
     <ClCompile Include="InsertionSortList.cpp" />
     <ClCompile Include="LargestRectangleInHistogram.cpp" />
     <ClCompile Include="LeetCodeQuestions.cpp" />
+    <ClCompile Include="LRUCache.cpp" />
     <ClCompile Include="ReverseWordsInAString.cpp" />
     <ClCompile Include="SortList.cpp" />
     <ClCompile Include="stdafx.cpp">
