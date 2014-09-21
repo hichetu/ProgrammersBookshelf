@@ -26,7 +26,7 @@ int findMinOffset(vector<int>& height, int start, int end, bool& continueSearch)
 }
 
 // First solve requires that we find the min, compute the area of the min rectangle, then
-// decompose into a leftt and right solve. This fails miserably on slopes increasing/decreasing
+// decompose into a left and right solve. This fails miserably on slopes increasing/decreasing
 // from left to right.
 int largestRectangleAreaWorker(vector<int>& height, int start, int end, int currentMax)
 {

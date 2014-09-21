@@ -27,6 +27,10 @@ namespace SortList
 {
     void RunTests();
 }
+namespace InsertionSortList
+{
+    void RunTests();
+}
 namespace WordLadder
 {
     void RunTests();

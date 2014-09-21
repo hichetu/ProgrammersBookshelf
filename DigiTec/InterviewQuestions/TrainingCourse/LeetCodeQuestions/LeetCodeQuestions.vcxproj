@@ -85,6 +85,7 @@
     <ClCompile Include="BestTimeToBuyAndSellStock2.cpp" />
     <ClCompile Include="BestTimeToBuyAndSellStock3.cpp" />
     <ClCompile Include="BinaryLevelOrderTraversal.cpp" />
+    <ClCompile Include="InsertionSortList.cpp" />
     <ClCompile Include="LargestRectangleInHistogram.cpp" />
     <ClCompile Include="LeetCodeQuestions.cpp" />
     <ClCompile Include="ReverseWordsInAString.cpp" />
