@@ -9,7 +9,8 @@ int _tmain(int argc, _TCHAR* argv[])
     // ReverseWordsInAString::RunTests();
     // SortList::RunTests();
     // InsertionSortList::RunTests();
-    LRUCache::RunTests();
+    // LRUCache::RunTests();
+    MergeKSortedLists::RunTests();
     // WordLadder::RunTests();
     // WordLadder2::RunTests();
     // BestTimeToBuyAndSellStock::RunTests();

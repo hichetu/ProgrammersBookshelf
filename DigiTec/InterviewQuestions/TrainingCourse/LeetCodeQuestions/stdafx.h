@@ -31,6 +31,10 @@ namespace InsertionSortList
 {
     void RunTests();
 }
+namespace MergeKSortedLists
+{
+    void RunTests();
+};
 namespace WordLadder
 {
     void RunTests();
