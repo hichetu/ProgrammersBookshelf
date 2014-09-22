@@ -81,6 +81,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AtoI.cpp" />
     <ClCompile Include="BestTimeToBuyAndSellStock.cpp" />
     <ClCompile Include="BestTimeToBuyAndSellStock2.cpp" />
     <ClCompile Include="BestTimeToBuyAndSellStock3.cpp" />
@@ -91,6 +92,7 @@
     <ClCompile Include="LRUCache.cpp" />
     <ClCompile Include="MergeKSortedLists.cpp" />
     <ClCompile Include="ReverseWordsInAString.cpp" />
+    <ClCompile Include="SingleNumber2.cpp" />
     <ClCompile Include="SortList.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

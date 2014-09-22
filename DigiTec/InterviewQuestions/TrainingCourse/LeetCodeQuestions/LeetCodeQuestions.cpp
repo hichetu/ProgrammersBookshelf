@@ -10,7 +10,9 @@ int _tmain(int argc, _TCHAR* argv[])
     // SortList::RunTests();
     // InsertionSortList::RunTests();
     // LRUCache::RunTests();
-    MergeKSortedLists::RunTests();
+    // MergeKSortedLists::RunTests();
+    // AtoI::RunTests();
+    SingleNumber2::RunTests();
     // WordLadder::RunTests();
     // WordLadder2::RunTests();
     // BestTimeToBuyAndSellStock::RunTests();

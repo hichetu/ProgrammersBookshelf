@@ -63,3 +63,11 @@ namespace LRUCache
 {
     void RunTests();
 }
+namespace AtoI
+{
+    void RunTests();
+}
+namespace SingleNumber2
+{
+    void RunTests();
+};

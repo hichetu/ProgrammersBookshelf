@@ -68,5 +68,11 @@
     <ClCompile Include="MergeKSortedLists.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AtoI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SingleNumber2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
