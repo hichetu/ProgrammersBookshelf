@@ -72,3 +72,15 @@ namespace SingleNumber2
 {
     void RunTests();
 };
+namespace Triangle
+{
+    void RunTests();
+}
+namespace DivideTwoIntegers
+{
+    void RunTests();
+}
+namespace WordBreak
+{
+    void RunTests();
+}

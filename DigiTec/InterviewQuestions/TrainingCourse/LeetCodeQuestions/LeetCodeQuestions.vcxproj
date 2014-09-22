@@ -86,6 +86,7 @@
     <ClCompile Include="BestTimeToBuyAndSellStock2.cpp" />
     <ClCompile Include="BestTimeToBuyAndSellStock3.cpp" />
     <ClCompile Include="BinaryLevelOrderTraversal.cpp" />
+    <ClCompile Include="DivideTwoIntegers.cpp" />
     <ClCompile Include="InsertionSortList.cpp" />
     <ClCompile Include="LargestRectangleInHistogram.cpp" />
     <ClCompile Include="LeetCodeQuestions.cpp" />
@@ -98,7 +99,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="ValidPalindrome.cpp" />
+    <ClCompile Include="WordBreak.cpp" />
     <ClCompile Include="WordLadder.cpp" />
     <ClCompile Include="WordLadder2.cpp" />
   </ItemGroup>

@@ -12,7 +12,10 @@ int _tmain(int argc, _TCHAR* argv[])
     // LRUCache::RunTests();
     // MergeKSortedLists::RunTests();
     // AtoI::RunTests();
-    SingleNumber2::RunTests();
+    // SingleNumber2::RunTests();
+    // Triangle::RunTests();
+    // DivideTwoIntegers::RunTests();
+    WordBreak::RunTests();
     // WordLadder::RunTests();
     // WordLadder2::RunTests();
     // BestTimeToBuyAndSellStock::RunTests();
