@@ -88,3 +88,7 @@ namespace PathSum
 {
     void RunTests();
 }
+namespace PathSum2
+{
+    void RunTests();
+}

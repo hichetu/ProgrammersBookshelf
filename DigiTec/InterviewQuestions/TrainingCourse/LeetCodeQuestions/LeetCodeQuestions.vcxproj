@@ -93,6 +93,7 @@
     <ClCompile Include="LRUCache.cpp" />
     <ClCompile Include="MergeKSortedLists.cpp" />
     <ClCompile Include="PathSum.cpp" />
+    <ClCompile Include="PathSum2.cpp" />
     <ClCompile Include="ReverseWordsInAString.cpp" />
     <ClCompile Include="SingleNumber2.cpp" />
     <ClCompile Include="SortList.cpp" />
