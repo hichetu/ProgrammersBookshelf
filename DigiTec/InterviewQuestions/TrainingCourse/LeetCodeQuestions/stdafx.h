@@ -11,6 +11,7 @@
 #include <tchar.h>
 #include <vector>
 #include <algorithm>
+#include <string>
 #include <set>
 #include <unordered_set>
 #include <map>
