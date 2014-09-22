@@ -84,3 +84,7 @@ namespace WordBreak
 {
     void RunTests();
 }
+namespace PathSum
+{
+    void RunTests();
+}

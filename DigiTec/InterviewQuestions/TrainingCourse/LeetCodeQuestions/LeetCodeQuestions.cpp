@@ -15,7 +15,8 @@ int _tmain(int argc, _TCHAR* argv[])
     // SingleNumber2::RunTests();
     // Triangle::RunTests();
     // DivideTwoIntegers::RunTests();
-    WordBreak::RunTests();
+    // WordBreak::RunTests();
+    PathSum::RunTests();
     // WordLadder::RunTests();
     // WordLadder2::RunTests();
     // BestTimeToBuyAndSellStock::RunTests();
