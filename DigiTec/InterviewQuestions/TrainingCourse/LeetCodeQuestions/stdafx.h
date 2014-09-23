@@ -92,3 +92,15 @@ namespace PathSum2
 {
     void RunTests();
 }
+namespace EvaluateReversePolishNotation
+{
+    void RunTests();
+}
+namespace ReorderList
+{
+    void RunTests();
+}
+namespace GasStation
+{
+    void RunTests();
+}

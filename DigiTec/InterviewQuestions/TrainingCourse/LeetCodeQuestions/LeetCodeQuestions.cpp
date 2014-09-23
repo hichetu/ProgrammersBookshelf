@@ -17,7 +17,10 @@ int _tmain(int argc, _TCHAR* argv[])
     // DivideTwoIntegers::RunTests();
     // WordBreak::RunTests();
     // PathSum::RunTests();
-    PathSum2::RunTests();
+    // PathSum2::RunTests();
+    // EvaluateReversePolishNotation::RunTests();
+    // ReorderList::RunTests();
+    GasStation::RunTests();
     // WordLadder::RunTests();
     // WordLadder2::RunTests();
     // BestTimeToBuyAndSellStock::RunTests();
