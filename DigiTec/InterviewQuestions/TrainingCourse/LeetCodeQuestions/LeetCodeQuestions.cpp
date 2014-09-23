@@ -20,7 +20,9 @@ int _tmain(int argc, _TCHAR* argv[])
     // PathSum2::RunTests();
     // EvaluateReversePolishNotation::RunTests();
     // ReorderList::RunTests();
-    GasStation::RunTests();
+    // GasStation::RunTests();
+    // BinaryTreeMaximumPathSum::RunTests();
+    BinaryTreeLevelOrderTraversal2::RunTests();
     // WordLadder::RunTests();
     // WordLadder2::RunTests();
     // BestTimeToBuyAndSellStock::RunTests();

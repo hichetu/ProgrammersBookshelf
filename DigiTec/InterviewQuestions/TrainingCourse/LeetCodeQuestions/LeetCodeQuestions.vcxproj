@@ -86,6 +86,8 @@
     <ClCompile Include="BestTimeToBuyAndSellStock2.cpp" />
     <ClCompile Include="BestTimeToBuyAndSellStock3.cpp" />
     <ClCompile Include="BinaryLevelOrderTraversal.cpp" />
+    <ClCompile Include="BinaryTreeLevelOrderTraversal2.cpp" />
+    <ClCompile Include="BinaryTreeMaximumPathSum.cpp" />
     <ClCompile Include="Candy.cpp" />
     <ClCompile Include="DivideTwoIntegers.cpp" />
     <ClCompile Include="EvaluateReversePolishNotation.cpp" />
