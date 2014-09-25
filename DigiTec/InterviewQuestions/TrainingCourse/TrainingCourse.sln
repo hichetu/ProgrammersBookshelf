@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StringsRegex", "StringsRege
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LeetCodeQuestions", "LeetCodeQuestions\LeetCodeQuestions.vcxproj", "{29D499DC-853C-487D-91FA-FE74BA38BF2C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NumberTheory", "NumberTheory\NumberTheory.vcxproj", "{167FE819-5BBE-4460-B2DD-CDB7AFFAA0CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -27,6 +29,10 @@ Global
 		{29D499DC-853C-487D-91FA-FE74BA38BF2C}.Debug|Win32.Build.0 = Debug|Win32
 		{29D499DC-853C-487D-91FA-FE74BA38BF2C}.Release|Win32.ActiveCfg = Release|Win32
 		{29D499DC-853C-487D-91FA-FE74BA38BF2C}.Release|Win32.Build.0 = Release|Win32
+		{167FE819-5BBE-4460-B2DD-CDB7AFFAA0CE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{167FE819-5BBE-4460-B2DD-CDB7AFFAA0CE}.Debug|Win32.Build.0 = Debug|Win32
+		{167FE819-5BBE-4460-B2DD-CDB7AFFAA0CE}.Release|Win32.ActiveCfg = Release|Win32
+		{167FE819-5BBE-4460-B2DD-CDB7AFFAA0CE}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
