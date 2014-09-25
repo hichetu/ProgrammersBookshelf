@@ -76,20 +76,44 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="LargestRectangleInHistogram.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AtoI.cpp" />
+    <ClCompile Include="BestTimeToBuyAndSellStock.cpp" />
+    <ClCompile Include="BestTimeToBuyAndSellStock2.cpp" />
+    <ClCompile Include="BestTimeToBuyAndSellStock3.cpp" />
+    <ClCompile Include="BinaryLevelOrderTraversal.cpp" />
+    <ClCompile Include="BinaryTreeLevelOrderTraversal2.cpp" />
+    <ClCompile Include="BinaryTreeMaximumPathSum.cpp" />
+    <ClCompile Include="Candy.cpp" />
+    <ClCompile Include="DivideTwoIntegers.cpp" />
+    <ClCompile Include="EvaluateReversePolishNotation.cpp" />
+    <ClCompile Include="GasStation.cpp" />
+    <ClCompile Include="InsertionSortList.cpp" />
     <ClCompile Include="LargestRectangleInHistogram.cpp" />
     <ClCompile Include="LeetCodeQuestions.cpp" />
+    <ClCompile Include="LRUCache.cpp" />
+    <ClCompile Include="MaximumProductSubarray.cpp" />
+    <ClCompile Include="MergeKSortedLists.cpp" />
+    <ClCompile Include="PathSum.cpp" />
+    <ClCompile Include="PathSum2.cpp" />
+    <ClCompile Include="ReorderList.cpp" />
+    <ClCompile Include="ReverseWordsInAString.cpp" />
+    <ClCompile Include="SingleNumber2.cpp" />
+    <ClCompile Include="SortList.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="SumRootToLeaf.cpp" />
+    <ClCompile Include="Triangle.cpp" />
+    <ClCompile Include="ValidPalindrome.cpp" />
+    <ClCompile Include="WordBreak.cpp" />
+    <ClCompile Include="WordLadder.cpp" />
+    <ClCompile Include="WordLadder2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
