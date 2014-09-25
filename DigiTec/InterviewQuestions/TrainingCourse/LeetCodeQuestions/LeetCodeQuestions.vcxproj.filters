@@ -113,5 +113,8 @@
     <ClCompile Include="BinaryTreeLevelOrderTraversal2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MaximumProductSubarray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

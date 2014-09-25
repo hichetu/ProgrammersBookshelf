@@ -112,3 +112,7 @@ namespace BinaryTreeLevelOrderTraversal2
 {
     void RunTests();
 }
+namespace MaximumProductSubarray
+{
+    void RunTests();
+}
