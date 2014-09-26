@@ -13,7 +13,7 @@ int _tmain(int argc, _TCHAR* argv[])
     // MergeKSortedLists::RunTests();
     // AtoI::RunTests();
     // SingleNumber2::RunTests();
-    Triangle::RunTests();
+    // Triangle::RunTests();
     // DivideTwoIntegers::RunTests();
     // WordBreak::RunTests();
     // PathSum::RunTests();
@@ -23,7 +23,7 @@ int _tmain(int argc, _TCHAR* argv[])
     // GasStation::RunTests();
     // BinaryTreeMaximumPathSum::RunTests();
     // BinaryTreeLevelOrderTraversal2::RunTests();
-    // MaximumProductSubarray::RunTests();
+    MaximumProductSubarray::RunTests();
     // WordLadder::RunTests();
     // WordLadder2::RunTests();
     // BestTimeToBuyAndSellStock::RunTests();
