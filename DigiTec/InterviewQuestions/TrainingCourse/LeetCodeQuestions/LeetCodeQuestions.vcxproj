@@ -97,6 +97,7 @@
     <ClCompile Include="LeetCodeQuestions.cpp" />
     <ClCompile Include="LRUCache.cpp" />
     <ClCompile Include="MaximumProductSubarray.cpp" />
+    <ClCompile Include="MaxPointsOnLine.cpp" />
     <ClCompile Include="MergeKSortedLists.cpp" />
     <ClCompile Include="PathSum.cpp" />
     <ClCompile Include="PathSum2.cpp" />
@@ -110,6 +111,7 @@
     </ClCompile>
     <ClCompile Include="SumRootToLeaf.cpp" />
     <ClCompile Include="Triangle.cpp" />
+    <ClCompile Include="ValidNumber.cpp" />
     <ClCompile Include="ValidPalindrome.cpp" />
     <ClCompile Include="WordBreak.cpp" />
     <ClCompile Include="WordLadder.cpp" />

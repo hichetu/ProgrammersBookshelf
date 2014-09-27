@@ -23,7 +23,9 @@ int _tmain(int argc, _TCHAR* argv[])
     // GasStation::RunTests();
     // BinaryTreeMaximumPathSum::RunTests();
     // BinaryTreeLevelOrderTraversal2::RunTests();
-    MaximumProductSubarray::RunTests();
+    // MaximumProductSubarray::RunTests();
+    // MaxPointsOnLine::RunTests();
+    ValidNumber::RunTests();
     // WordLadder::RunTests();
     // WordLadder2::RunTests();
     // BestTimeToBuyAndSellStock::RunTests();

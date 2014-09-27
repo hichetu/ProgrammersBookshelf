@@ -15,6 +15,7 @@
 #include <set>
 #include <unordered_set>
 #include <map>
+#include <unordered_map>
 
 using namespace std;
 
@@ -113,6 +114,14 @@ namespace BinaryTreeLevelOrderTraversal2
     void RunTests();
 }
 namespace MaximumProductSubarray
+{
+    void RunTests();
+}
+namespace MaxPointsOnLine
+{
+    void RunTests();
+}
+namespace ValidNumber
 {
     void RunTests();
 }
