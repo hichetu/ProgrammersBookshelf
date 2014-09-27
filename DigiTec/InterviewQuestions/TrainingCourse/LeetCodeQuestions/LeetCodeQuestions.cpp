@@ -25,7 +25,8 @@ int _tmain(int argc, _TCHAR* argv[])
     // BinaryTreeLevelOrderTraversal2::RunTests();
     // MaximumProductSubarray::RunTests();
     // MaxPointsOnLine::RunTests();
-    ValidNumber::RunTests();
+    // ValidNumber::RunTests();
+    TextJustification::RunTests();
     // WordLadder::RunTests();
     // WordLadder2::RunTests();
     // BestTimeToBuyAndSellStock::RunTests();

@@ -125,3 +125,7 @@ namespace ValidNumber
 {
     void RunTests();
 }
+namespace TextJustification
+{
+    void RunTests();
+}
