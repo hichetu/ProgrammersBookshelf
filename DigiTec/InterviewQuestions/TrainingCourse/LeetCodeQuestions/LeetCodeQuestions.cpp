@@ -30,7 +30,8 @@ int _tmain(int argc, _TCHAR* argv[])
     // SurroundedRegions::RunTests();
     // SubstringWithConcatOfAllWords::RunTests();
     // BinaryTreeZigZagLevelOrder::RunTests();
-    FlattenBinaryTreeToLinkedList::RunTests();
+    // FlattenBinaryTreeToLinkedList::RunTests();
+    RotateImage::RunTests();
     // WordLadder::RunTests();
     // WordLadder2::RunTests();
     // BestTimeToBuyAndSellStock::RunTests();

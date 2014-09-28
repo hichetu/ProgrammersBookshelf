@@ -146,3 +146,7 @@ namespace FlattenBinaryTreeToLinkedList
 {
     void RunTests();
 }
+namespace RotateImage
+{
+    void RunTests();
+}

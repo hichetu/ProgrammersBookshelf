@@ -105,6 +105,7 @@
     <ClCompile Include="PathSum2.cpp" />
     <ClCompile Include="ReorderList.cpp" />
     <ClCompile Include="ReverseWordsInAString.cpp" />
+    <ClCompile Include="RotateImage.cpp" />
     <ClCompile Include="SingleNumber2.cpp" />
     <ClCompile Include="SortList.cpp" />
     <ClCompile Include="stdafx.cpp">
