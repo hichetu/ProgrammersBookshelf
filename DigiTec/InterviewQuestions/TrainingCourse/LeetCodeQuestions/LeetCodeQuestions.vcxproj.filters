@@ -125,5 +125,8 @@
     <ClCompile Include="TextJustification.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SurroundedRegions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

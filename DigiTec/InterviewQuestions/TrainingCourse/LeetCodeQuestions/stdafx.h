@@ -129,3 +129,7 @@ namespace TextJustification
 {
     void RunTests();
 }
+namespace SurroundedRegions
+{
+    void RunTests();
+}
