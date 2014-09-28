@@ -27,7 +27,10 @@ int _tmain(int argc, _TCHAR* argv[])
     // MaxPointsOnLine::RunTests();
     // ValidNumber::RunTests();
     // TextJustification::RunTests();
-    SurroundedRegions::RunTests();
+    // SurroundedRegions::RunTests();
+    // SubstringWithConcatOfAllWords::RunTests();
+    // BinaryTreeZigZagLevelOrder::RunTests();
+    FlattenBinaryTreeToLinkedList::RunTests();
     // WordLadder::RunTests();
     // WordLadder2::RunTests();
     // BestTimeToBuyAndSellStock::RunTests();

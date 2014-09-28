@@ -128,5 +128,17 @@
     <ClCompile Include="SurroundedRegions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SubstringWithConcatOfAllWords.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UniqueBSTs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BinaryTreeZigZagLevelOrder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FlattenBinaryTreeToLinkedList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

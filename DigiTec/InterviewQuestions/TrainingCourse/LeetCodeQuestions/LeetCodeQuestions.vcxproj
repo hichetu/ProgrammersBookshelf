@@ -88,9 +88,11 @@
     <ClCompile Include="BinaryLevelOrderTraversal.cpp" />
     <ClCompile Include="BinaryTreeLevelOrderTraversal2.cpp" />
     <ClCompile Include="BinaryTreeMaximumPathSum.cpp" />
+    <ClCompile Include="BinaryTreeZigZagLevelOrder.cpp" />
     <ClCompile Include="Candy.cpp" />
     <ClCompile Include="DivideTwoIntegers.cpp" />
     <ClCompile Include="EvaluateReversePolishNotation.cpp" />
+    <ClCompile Include="FlattenBinaryTreeToLinkedList.cpp" />
     <ClCompile Include="GasStation.cpp" />
     <ClCompile Include="InsertionSortList.cpp" />
     <ClCompile Include="LargestRectangleInHistogram.cpp" />
@@ -109,10 +111,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="SubstringWithConcatOfAllWords.cpp" />
     <ClCompile Include="SumRootToLeaf.cpp" />
     <ClCompile Include="SurroundedRegions.cpp" />
     <ClCompile Include="TextJustification.cpp" />
     <ClCompile Include="Triangle.cpp" />
+    <ClCompile Include="UniqueBSTs.cpp" />
     <ClCompile Include="ValidNumber.cpp" />
     <ClCompile Include="ValidPalindrome.cpp" />
     <ClCompile Include="WordBreak.cpp" />

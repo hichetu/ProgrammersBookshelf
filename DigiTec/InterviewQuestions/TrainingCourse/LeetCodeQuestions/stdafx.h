@@ -16,6 +16,7 @@
 #include <unordered_set>
 #include <map>
 #include <unordered_map>
+#include <queue>
 
 using namespace std;
 
@@ -130,6 +131,18 @@ namespace TextJustification
     void RunTests();
 }
 namespace SurroundedRegions
+{
+    void RunTests();
+}
+namespace SubstringWithConcatOfAllWords
+{
+    void RunTests();
+}
+namespace BinaryTreeZigZagLevelOrder
+{
+    void RunTests();
+}
+namespace FlattenBinaryTreeToLinkedList
 {
     void RunTests();
 }
