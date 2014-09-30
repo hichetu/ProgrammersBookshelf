@@ -31,7 +31,9 @@ int _tmain(int argc, _TCHAR* argv[])
     // SubstringWithConcatOfAllWords::RunTests();
     // BinaryTreeZigZagLevelOrder::RunTests();
     // FlattenBinaryTreeToLinkedList::RunTests();
-    RotateImage::RunTests();
+    // RotateImage::RunTests();
+    // PalindromePartitioning::RunTests();
+    PalindromePartitioning2::RunTests();
     // WordLadder::RunTests();
     // WordLadder2::RunTests();
     // BestTimeToBuyAndSellStock::RunTests();

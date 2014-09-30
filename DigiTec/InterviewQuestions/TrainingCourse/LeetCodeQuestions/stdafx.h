@@ -150,3 +150,13 @@ namespace RotateImage
 {
     void RunTests();
 }
+namespace PalindromePartitioning
+{
+
+    void RunTests();
+}
+namespace PalindromePartitioning2
+{
+
+    void RunTests();
+}
