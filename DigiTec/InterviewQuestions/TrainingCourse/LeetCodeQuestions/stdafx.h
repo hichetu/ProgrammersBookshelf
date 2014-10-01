@@ -167,3 +167,7 @@ namespace SetMatrixZeroes
 {
     void RunTests();
 }
+namespace SortColors
+{
+    void RunTests();
+}

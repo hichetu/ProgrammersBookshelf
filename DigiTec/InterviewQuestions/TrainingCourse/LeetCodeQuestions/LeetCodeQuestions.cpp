@@ -35,7 +35,8 @@ int _tmain(int argc, _TCHAR* argv[])
     // PalindromePartitioning::RunTests();
     // PalindromePartitioning2::RunTests();
     // SearchInsertPosition::RunTests();
-    SetMatrixZeroes::RunTests();
+    // SetMatrixZeroes::RunTests();
+    SortColors::RunTests();
     // WordLadder::RunTests();
     // WordLadder2::RunTests();
     // BestTimeToBuyAndSellStock::RunTests();
