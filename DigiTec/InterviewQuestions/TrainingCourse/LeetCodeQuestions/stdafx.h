@@ -157,6 +157,13 @@ namespace PalindromePartitioning
 }
 namespace PalindromePartitioning2
 {
-
+    void RunTests();
+}
+namespace SearchInsertPosition
+{
+    void RunTests();
+}
+namespace SetMatrixZeroes
+{
     void RunTests();
 }
