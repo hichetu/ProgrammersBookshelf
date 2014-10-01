@@ -171,3 +171,15 @@ namespace SortColors
 {
     void RunTests();
 }
+namespace ConstructBinaryFromInorderAndPostorder
+{
+    void RunTests();
+}
+namespace NextPermutation
+{
+    void RunTests();
+}
+namespace MergeSortedArray
+{
+    void RunTests();
+}
