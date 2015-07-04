@@ -56,6 +56,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <Profile>true</Profile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -73,6 +74,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <Profile>true</Profile>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -91,6 +93,8 @@
     <ClCompile Include="BinaryTreeZigZagLevelOrder.cpp" />
     <ClCompile Include="Candy.cpp" />
     <ClCompile Include="ConstructBinaryFromInorderAndPostorder.cpp" />
+    <ClCompile Include="ContainsDuplicate3.cpp" />
+    <ClCompile Include="CountPrimes.cpp" />
     <ClCompile Include="DivideTwoIntegers.cpp" />
     <ClCompile Include="EvaluateReversePolishNotation.cpp" />
     <ClCompile Include="FlattenBinaryTreeToLinkedList.cpp" />

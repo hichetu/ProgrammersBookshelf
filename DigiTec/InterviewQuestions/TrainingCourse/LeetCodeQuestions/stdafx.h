@@ -22,6 +22,14 @@ using namespace std;
 
 #include "LargestRectangleInHistogram.h"
 
+namespace CountPrimes
+{
+    void RunTests();
+}
+namespace ContainsDuplicate3
+{
+    void RunTests();
+}
 namespace ReverseWordsInAString
 {
     void RunTests();

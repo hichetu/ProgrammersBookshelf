@@ -39,13 +39,15 @@ int _tmain(int argc, _TCHAR* argv[])
     // SortColors::RunTests();
     // ConstructBinaryFromInorderAndPostorder::RunTests();
     // NextPermutation::RunTests();
-    MergeSortedArray::RunTests();
+    // MergeSortedArray::RunTests();
     // WordLadder::RunTests();
     // WordLadder2::RunTests();
     // BestTimeToBuyAndSellStock::RunTests();
     // BestTimeToBuyAndSellStock2::RunTests();
     // BestTimeToBuyAndSellStock3::RunTests();
     // BinaryLevelOrderTraversal::RunTests();
+    // ContainsDuplicate3::RunTests();
+    CountPrimes::RunTests();
 
     /*
     vector<int> heights { 2, 1, 5, 6, 2, 3 };
