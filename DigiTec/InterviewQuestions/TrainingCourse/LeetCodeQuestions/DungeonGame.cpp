@@ -45,6 +45,7 @@ namespace DungeonGame
             const int colCount = dungeon[0].size();
 
             vector<int> M(colCount + 1, INT_MAX);
+            M[colCount - 1] = 1;
             for (int i = rowCount - 1; i >= 0; i--)
             {
                 for (int j = colCount - 1; j >= 0; j--)

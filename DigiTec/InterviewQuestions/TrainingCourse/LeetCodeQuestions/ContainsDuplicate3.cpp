@@ -13,17 +13,18 @@ namespace ContainsDuplicate3
                 return false;
             }
 
+            auto it = nums.begin();
             std::set<int> previous;
-            previous.insert(nums[0]);
+            previous.insert(*it++);
 
             int i;
             for (i = 1; i < len && i <= k; i++)
             {
-                const int currentValue = nums[i];
-                auto it = previous.lower_bound(currentValue - t);
-                if (it != previous.end())
+                const int currentValue = *it++;
+                auto it2 = previous.lower_bound(currentValue - t);
+                if (it2 != previous.end())
                 {
-                    int diff = currentValue - *it;
+                    int diff = currentValue - *it2;
                     if (diff >= -t && diff <= t)
                     {
                         return true;
@@ -35,11 +36,11 @@ namespace ContainsDuplicate3
             {
                 previous.erase(nums[removeAt++]);
 
-                const int currentValue = nums[i];
-                auto it = previous.lower_bound(currentValue - t);
-                if (it != previous.end())
+                const int currentValue = *it++;
+                auto it2 = previous.lower_bound(currentValue - t);
+                if (it2 != previous.end())
                 {
-                    int diff = currentValue - *it;
+                    int diff = currentValue - *it2;
                     if (diff >= -t && diff <= t)
                     {
                         return true;

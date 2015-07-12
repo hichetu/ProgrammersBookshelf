@@ -46,10 +46,10 @@ int _tmain(int argc, _TCHAR* argv[])
     // BestTimeToBuyAndSellStock2::RunTests();
     // BestTimeToBuyAndSellStock3::RunTests();
     // BinaryLevelOrderTraversal::RunTests();
-    // ContainsDuplicate3::RunTests();
+    ContainsDuplicate3::RunTests();
     // CountPrimes::RunTests();
     // CountCompleteTreeNodes::RunTests();
-    DungeonGame::RunTests();
+    // DungeonGame::RunTests();
 
     /*
     vector<int> heights { 2, 1, 5, 6, 2, 3 };
