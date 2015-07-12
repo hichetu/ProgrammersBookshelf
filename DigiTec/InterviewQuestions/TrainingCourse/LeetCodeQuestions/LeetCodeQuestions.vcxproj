@@ -94,8 +94,10 @@
     <ClCompile Include="Candy.cpp" />
     <ClCompile Include="ConstructBinaryFromInorderAndPostorder.cpp" />
     <ClCompile Include="ContainsDuplicate3.cpp" />
+    <ClCompile Include="CountCompleteTreeNodes.cpp" />
     <ClCompile Include="CountPrimes.cpp" />
     <ClCompile Include="DivideTwoIntegers.cpp" />
+    <ClCompile Include="DungeonGame.cpp" />
     <ClCompile Include="EvaluateReversePolishNotation.cpp" />
     <ClCompile Include="FlattenBinaryTreeToLinkedList.cpp" />
     <ClCompile Include="GasStation.cpp" />

@@ -22,6 +22,14 @@ using namespace std;
 
 #include "LargestRectangleInHistogram.h"
 
+namespace DungeonGame
+{
+    void RunTests();
+}
+namespace CountCompleteTreeNodes
+{
+    void RunTests();
+}
 namespace CountPrimes
 {
     void RunTests();

@@ -173,5 +173,11 @@
     <ClCompile Include="CountPrimes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CountCompleteTreeNodes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DungeonGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
