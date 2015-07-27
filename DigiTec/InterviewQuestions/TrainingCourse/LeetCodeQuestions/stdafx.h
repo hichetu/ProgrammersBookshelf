@@ -22,6 +22,14 @@ using namespace std;
 
 #include "LargestRectangleInHistogram.h"
 
+namespace NumberOfOneDigit
+{
+    void RunTests();
+}
+namespace MedianOfTwoSortedArrays
+{
+    void RunTests();
+}
 namespace DungeonGame
 {
     void RunTests();

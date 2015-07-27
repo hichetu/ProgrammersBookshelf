@@ -107,9 +107,11 @@
     <ClCompile Include="LRUCache.cpp" />
     <ClCompile Include="MaximumProductSubarray.cpp" />
     <ClCompile Include="MaxPointsOnLine.cpp" />
+    <ClCompile Include="MedianOfTwoSortedArrays.cpp" />
     <ClCompile Include="MergeKSortedLists.cpp" />
     <ClCompile Include="MergeSortedArray.cpp" />
     <ClCompile Include="NextPermutation.cpp" />
+    <ClCompile Include="NumberOfOneDigit.cpp" />
     <ClCompile Include="PalindromeParitioning.cpp" />
     <ClCompile Include="PalindromePartitioning2.cpp" />
     <ClCompile Include="PathSum.cpp" />
